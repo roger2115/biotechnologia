@@ -113,7 +113,7 @@ themeAudio.volume = 0.4;
 
 let musicStarted = false;
 function tryAutoplay() {
-  if (musicStarted) return;
+  if (musicStarted || !audioUnlocked) return;
   musicStarted = true;
   themeAudio.play().then(() => {
     musicToggle.textContent = '⏸ PAUSE';
@@ -122,7 +122,6 @@ function tryAutoplay() {
 }
 document.addEventListener('click', tryAutoplay, { once: true });
 document.addEventListener('keydown', tryAutoplay, { once: true });
-document.addEventListener('scroll', tryAutoplay, { once: true });
 
 musicToggle.addEventListener('click', () => {
   unlockAudio();
@@ -143,20 +142,12 @@ volSlider.addEventListener('input', () => { themeAudio.volume = parseFloat(volSl
 // ============================================================
 // VIDEO MODAL
 // ============================================================
-function openVideo(url) {
+// VIDEO — otwiera wyszukiwanie YouTube w nowej karcie
+// ============================================================
+function openVideo(query) {
   playClickSound();
-  const modal = document.getElementById('videoModal');
-  document.getElementById('videoFrame').src = url + '?autoplay=1';
-  modal.classList.add('open');
-  document.body.style.overflow = 'hidden';
+  window.open('https://www.youtube.com/results?search_query=' + encodeURIComponent(query), '_blank');
 }
-function closeVideo(e) {
-  if (e && e.target !== document.getElementById('videoModal') && !e.target.classList.contains('modal-close')) return;
-  document.getElementById('videoFrame').src = '';
-  document.getElementById('videoModal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideo({ target: document.getElementById('videoModal') }); });
 
 // ============================================================
 // SCROLL REVEAL
