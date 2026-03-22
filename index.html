@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biotechnologia Molekularna | GMO</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="bgCanvas"></canvas>
+<div class="scanline"></div>
+<div class="noise"></div>
+
+<!-- HEADER -->
+<header class="holo-header">
+  <div class="header-corner tl"></div>
+  <div class="header-corner tr"></div>
+  <div class="header-corner bl"></div>
+  <div class="header-corner br"></div>
+  <div class="header-inner">
+    <div class="dna-icon">🧬</div>
+    <h1 class="glitch" data-text="BIOTECHNOLOGIA MOLEKULARNA">BIOTECHNOLOGIA MOLEKULARNA</h1>
+    <p class="subtitle">KORZYŚCI I ZAGROŻENIA &nbsp;|&nbsp; GMO — WADY I ZALETY</p>
+    <div class="header-stats">
+      <span class="stat-pill">⚗️ NAUKA</span>
+      <span class="stat-pill">🔬 BADANIA</span>
+      <span class="stat-pill">🌱 PRZYSZŁOŚĆ</span>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="holo-nav">
+  <a href="#intro" class="nav-btn">WPROWADZENIE</a>
+  <a href="#korzysci" class="nav-btn">KORZYŚCI</a>
+  <a href="#zagrozenia" class="nav-btn">ZAGROŻENIA</a>
+  <a href="#gmo" class="nav-btn">GMO</a>
+  <a href="#soja" class="nav-btn">SOJA GMO</a>
+  <a href="#wnioski" class="nav-btn">WNIOSKI</a>
+  <a href="#gra" class="nav-btn">GRA</a>
+  <a href="#test" class="nav-btn">TEST WIEDZY</a>
+</nav>
+
+<!-- MUSIC PLAYER -->
+<div class="music-player" id="musicPlayer">
+  <audio id="themeAudio" loop>
+    <source src="C:/Users/Roger/Documents/Biologia/Hans Zimmer  (Interstellar Main Theme) - Space 4k - no copyright Interstaller inspired Music.mp3" type="audio/mpeg">
+  </audio>
+  <button class="music-toggle" id="musicToggle" title="Odtwórz muzykę">▶ THEME</button>
+  <div class="music-vol-wrap">
+    <span class="vol-icon">🔊</span>
+    <input type="range" id="volSlider" class="vol-slider" min="0" max="1" step="0.01" value="0.4">
+  </div>
+  <span class="music-label" id="musicLabel">Hans Zimmer — Interstellar Theme</span>
+</div>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    ⬡ BIOTECHNOLOGIA MOLEKULARNA &nbsp;&nbsp; ⬡ GMO — ORGANIZMY MODYFIKOWANE GENETYCZNIE &nbsp;&nbsp; ⬡ SOJA TRANSGENICZNA &nbsp;&nbsp; ⬡ INŻYNIERIA GENETYCZNA &nbsp;&nbsp; ⬡ CRISPR-CAS9 &nbsp;&nbsp; ⬡ REKOMBINACJA DNA &nbsp;&nbsp; ⬡ BIOETYKA &nbsp;&nbsp; ⬡ BEZPIECZEŃSTWO ŻYWNOŚCI &nbsp;&nbsp;
+  </div>
+</div>
+
+<!-- INTRO SECTION -->
+<section id="intro" class="holo-section">
+  <div class="section-label">// MODUŁ 01 — WPROWADZENIE</div>
+  <div class="holo-card wide">
+    <div class="card-glow"></div>
+    <div class="card-icon">🔬</div>
+    <h2>Czym jest Biotechnologia Molekularna?</h2>
+    <p>Biotechnologia molekularna to dziedzina nauki łącząca biologię, chemię i informatykę w celu manipulowania organizmami na poziomie molekularnym. Wykorzystuje techniki inżynierii genetycznej do modyfikowania DNA, RNA i białek organizmów żywych.</p>
+    <p>Jej zastosowania obejmują medycynę, rolnictwo, przemysł farmaceutyczny oraz ochronę środowiska. Dzięki niej możliwe jest tworzenie nowych leków, szczepionek, a także organizmów o pożądanych cechach.</p>
+    <div class="info-grid">
+      <div class="info-tile"><span class="tile-num">1953</span><span class="tile-label">Odkrycie struktury DNA</span></div>
+      <div class="info-tile"><span class="tile-num">1973</span><span class="tile-label">Pierwsza rekombinacja DNA</span></div>
+      <div class="info-tile"><span class="tile-num">1994</span><span class="tile-label">Pierwsze GMO na rynku</span></div>
+      <div class="info-tile"><span class="tile-num">2012</span><span class="tile-label">Odkrycie CRISPR-Cas9</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- KORZYSCI -->
+<section id="korzysci" class="holo-section">
+  <div class="section-label">// MODUŁ 02 — KORZYŚCI</div>
+  <h2 class="section-title green">KORZYŚCI BIOTECHNOLOGII</h2>
+  <div class="cards-row">
+    <div class="holo-card">
+      <div class="card-glow green-glow"></div>
+      <div class="card-icon">💊</div>
+      <h3>Medycyna</h3>
+      <ul class="holo-list">
+        <li>Produkcja insuliny metodami biotechnologicznymi</li>
+        <li>Terapia genowa chorób dziedzicznych</li>
+        <li>Szczepionki mRNA (COVID-19)</li>
+        <li>Leki biologiczne i przeciwciała monoklonalne</li>
+        <li>Diagnostyka molekularna PCR</li>
+      </ul>
+    </div>
+    <div class="holo-card">
+      <div class="card-glow green-glow"></div>
+      <div class="card-icon">🌾</div>
+      <h3>Rolnictwo</h3>
+      <ul class="holo-list">
+        <li>Rośliny odporne na szkodniki i choroby</li>
+        <li>Wyższe plony przy mniejszym zużyciu pestycydów</li>
+        <li>Odporność na suszę i mróz</li>
+        <li>Wzbogacenie wartości odżywczej (Golden Rice)</li>
+        <li>Redukcja strat po zbiorach</li>
+      </ul>
+    </div>
+    <div class="holo-card">
+      <div class="card-glow green-glow"></div>
+      <div class="card-icon">🌍</div>
+      <h3>Środowisko</h3>
+      <ul class="holo-list">
+        <li>Bioremedacja — oczyszczanie gleby i wody</li>
+        <li>Biopaliwa z organizmów modyfikowanych</li>
+        <li>Redukcja emisji CO₂ w rolnictwie</li>
+        <li>Ochrona zagrożonych gatunków</li>
+        <li>Biodegradowalne bioplastiki</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ZAGROZENIA -->
+<section id="zagrozenia" class="holo-section">
+  <div class="section-label">// MODUŁ 03 — ZAGROŻENIA</div>
+  <h2 class="section-title red">ZAGROŻENIA I RYZYKA</h2>
+  <div class="cards-row">
+    <div class="holo-card danger">
+      <div class="card-glow red-glow"></div>
+      <div class="card-icon">⚠️</div>
+      <h3>Zagrożenia Zdrowotne</h3>
+      <ul class="holo-list red-list">
+        <li>Potencjalne reakcje alergiczne na nowe białka</li>
+        <li>Nieprzewidywalne efekty długoterminowe</li>
+        <li>Oporność na antybiotyki (markery selekcyjne)</li>
+        <li>Toksyczność nowych metabolitów</li>
+        <li>Brak pełnych badań długoterminowych</li>
+      </ul>
+    </div>
+    <div class="holo-card danger">
+      <div class="card-glow red-glow"></div>
+      <div class="card-icon">🧪</div>
+      <h3>Zagrożenia Ekologiczne</h3>
+      <ul class="holo-list red-list">
+        <li>Przepływ genów do dzikich populacji</li>
+        <li>Zagrożenie dla bioróżnorodności</li>
+        <li>Powstawanie "superchwastów" odpornych na herbicydy</li>
+        <li>Wpływ na owady zapylające (pszczoły)</li>
+        <li>Monopolizacja nasion przez korporacje</li>
+      </ul>
+    </div>
+    <div class="holo-card danger">
+      <div class="card-glow red-glow"></div>
+      <div class="card-icon">⚖️</div>
+      <h3>Zagrożenia Etyczne</h3>
+      <ul class="holo-list red-list">
+        <li>Modyfikacja genomu człowieka (eugenika)</li>
+        <li>Patentowanie organizmów żywych</li>
+        <li>Nierówny dostęp do technologii</li>
+        <li>Brak transparentności w oznakowaniu</li>
+        <li>Bioterroryzm i broń biologiczna</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- GMO SECTION -->
+<section id="gmo" class="holo-section">
+  <div class="section-label">// MODUŁ 04 — GMO</div>
+  <h2 class="section-title cyan">ORGANIZMY MODYFIKOWANE GENETYCZNIE</h2>
+  <div class="holo-card wide">
+    <div class="card-glow cyan-glow"></div>
+    <p>GMO (Genetically Modified Organisms) to organizmy, których materiał genetyczny został zmieniony metodami inżynierii genetycznej w sposób niemożliwy do osiągnięcia w drodze naturalnego krzyżowania lub selekcji.</p>
+    <div class="two-col">
+      <div class="col-block green-block">
+        <h3>✅ ZALETY GMO</h3>
+        <ul class="holo-list">
+          <li>Zwiększona odporność na choroby i szkodniki</li>
+          <li>Wyższe plony — walka z głodem na świecie</li>
+          <li>Dłuższy termin przydatności do spożycia</li>
+          <li>Lepsza wartość odżywcza produktów</li>
+          <li>Mniejsze zużycie pestycydów i herbicydów</li>
+          <li>Odporność na niekorzystne warunki klimatyczne</li>
+          <li>Produkcja leków w roślinach (farmakologia)</li>
+        </ul>
+      </div>
+      <div class="col-block red-block">
+        <h3>❌ WADY GMO</h3>
+        <ul class="holo-list">
+          <li>Niepewność co do długoterminowego wpływu na zdrowie</li>
+          <li>Ryzyko zanieczyszczenia genetycznego ekosystemów</li>
+          <li>Uzależnienie rolników od korporacji nasiennych</li>
+          <li>Kontrowersje etyczne i społeczne</li>
+          <li>Brak pełnej akceptacji społecznej</li>
+          <li>Koszty badań i certyfikacji</li>
+          <li>Restrykcyjne regulacje prawne w UE</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="holo-card wide">
+    <div class="card-glow cyan-glow"></div>
+    <h3>🌐 Najpopularniejsze rośliny GMO na świecie</h3>
+    <div class="gmo-grid">
+      <div class="gmo-item"><span class="gmo-emoji">🌱</span><span>Soja</span><span class="gmo-pct">77%</span><div class="gmo-bar"><div class="gmo-fill" style="width:77%"></div></div></div>
+      <div class="gmo-item"><span class="gmo-emoji">🌽</span><span>Kukurydza</span><span class="gmo-pct">32%</span><div class="gmo-bar"><div class="gmo-fill" style="width:32%"></div></div></div>
+      <div class="gmo-item"><span class="gmo-emoji">🌿</span><span>Bawełna</span><span class="gmo-pct">80%</span><div class="gmo-bar"><div class="gmo-fill" style="width:80%"></div></div></div>
+      <div class="gmo-item"><span class="gmo-emoji">🫒</span><span>Rzepak</span><span class="gmo-pct">30%</span><div class="gmo-bar"><div class="gmo-fill" style="width:30%"></div></div></div>
+      <div class="gmo-item"><span class="gmo-emoji">🍅</span><span>Pomidor</span><span class="gmo-pct">15%</span><div class="gmo-bar"><div class="gmo-fill" style="width:15%"></div></div></div>
+      <div class="gmo-item"><span class="gmo-emoji">🍚</span><span>Ryż (Golden)</span><span class="gmo-pct">5%</span><div class="gmo-bar"><div class="gmo-fill" style="width:5%"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOJA SECTION -->
+<section id="soja" class="holo-section">
+  <div class="section-label">// MODUŁ 05 — SOJA GMO</div>
+  <h2 class="section-title yellow">SOJA TRANSGENICZNA — GDZIE JEST DODAWANA?</h2>
+  <div class="holo-card wide">
+    <div class="card-glow yellow-glow"></div>
+    <div class="soja-intro">
+      <div class="soja-icon">🌱</div>
+      <div>
+        <p>Soja GMO (głównie odmiana Roundup Ready firmy Monsanto) jest odporna na herbicyd glifosat. Stanowi ponad <strong>77% światowej produkcji soi</strong>. Polska i UE importują ogromne ilości soi GMO jako paszę dla zwierząt hodowlanych.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards-row">
+    <div class="holo-card">
+      <div class="card-glow yellow-glow"></div>
+      <div class="card-icon">🍔</div>
+      <h3>Żywność Przetworzona</h3>
+      <ul class="holo-list yellow-list">
+        <li>Olej sojowy (margaryny, majonezy)</li>
+        <li>Lecytyna sojowa (E322) — czekolady, ciastka</li>
+        <li>Mąka sojowa — pieczywo, makarony</li>
+        <li>Tofu i produkty wegańskie</li>
+        <li>Sosy sojowe i teriyaki</li>
+        <li>Napoje roślinne (mleko sojowe)</li>
+        <li>Białko sojowe — wędliny, parówki</li>
+      </ul>
+    </div>
+    <div class="holo-card">
+      <div class="card-glow yellow-glow"></div>
+      <div class="card-icon">🐄</div>
+      <h3>Pasza dla Zwierząt</h3>
+      <ul class="holo-list yellow-list">
+        <li>Śruta sojowa — główna pasza dla drobiu</li>
+        <li>Karma dla trzody chlewnej</li>
+        <li>Pasza dla bydła mlecznego i mięsnego</li>
+        <li>Karma dla ryb hodowlanych (akwakultura)</li>
+        <li>Pasza dla zwierząt domowych</li>
+      </ul>
+    </div>
+    <div class="holo-card">
+      <div class="card-glow yellow-glow"></div>
+      <div class="card-icon">🏭</div>
+      <h3>Przemysł i Inne</h3>
+      <ul class="holo-list yellow-list">
+        <li>Biopaliwa (biodiesel z oleju sojowego)</li>
+        <li>Farby i lakiery na bazie soi</li>
+        <li>Kosmetyki i kremy nawilżające</li>
+        <li>Kleje i uszczelniacze przemysłowe</li>
+        <li>Suplementy diety (izoflawony)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="holo-card wide warning-card">
+    <div class="card-glow yellow-glow"></div>
+    <h3>⚠️ Jak rozpoznać soję GMO na etykiecie?</h3>
+    <div class="label-tips">
+      <div class="label-tip">🔍 Szukaj oznaczenia <span class="highlight">„genetycznie zmodyfikowana"</span> lub <span class="highlight">„zawiera GMO"</span></div>
+      <div class="label-tip">📋 Lecytyna sojowa <span class="highlight">E322</span> — często pochodzi z soi GMO</div>
+      <div class="label-tip">✅ Produkty <span class="highlight">„non-GMO"</span> lub <span class="highlight">„bez GMO"</span> są certyfikowane</div>
+      <div class="label-tip">🌿 W UE obowiązek znakowania powyżej <span class="highlight">0,9%</span> zawartości GMO</div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS SECTION -->
+<section id="videos" class="holo-section">
+  <div class="section-label">// MODUŁ 06 — MATERIAŁY WIDEO</div>
+  <h2 class="section-title cyan">FILMY EDUKACYJNE</h2>
+  <div class="videos-grid">
+
+    <div class="video-card" onclick="openVideo('https://www.youtube.com/embed/Iy4d4_7NNHM')">
+      <div class="video-thumb">
+        <div class="video-thumb-placeholder" style="background:linear-gradient(135deg,#041428,#0a2a4a)">
+          <span class="thumb-icon">🧬</span>
+          <span class="thumb-label">GMO — Kurzgesagt</span>
+        </div>
+        <div class="play-overlay"><span class="play-btn-big">▶</span></div>
+      </div>
+      <div class="video-info">
+        <span class="video-tag">GMO</span>
+        <h4>GMO — Czy to naprawdę takie złe?</h4>
+        <p>Kurzgesagt wyjaśnia czym są GMO, jak działają i co mówi nauka na temat ich bezpieczeństwa.</p>
+      </div>
+    </div>
+
+    <div class="video-card" onclick="openVideo('https://www.youtube.com/embed/jAhjPd4uNFY')">
+      <div class="video-thumb">
+        <div class="video-thumb-placeholder" style="background:linear-gradient(135deg,#041428,#1a0a2a)">
+          <span class="thumb-icon">✂️</span>
+          <span class="thumb-label">CRISPR — TED-Ed</span>
+        </div>
+        <div class="play-overlay"><span class="play-btn-big">▶</span></div>
+      </div>
+      <div class="video-info">
+        <span class="video-tag">CRISPR</span>
+        <h4>CRISPR-Cas9 — Edycja Genów</h4>
+        <p>Jak działa rewolucyjna technologia edycji genomu i jakie ma zastosowania w medycynie.</p>
+      </div>
+    </div>
+
+    <div class="video-card" onclick="openVideo('https://www.youtube.com/embed/MkqH2O6B0bk')">
+      <div class="video-thumb">
+        <div class="video-thumb-placeholder" style="background:linear-gradient(135deg,#041428,#0a2a1a)">
+          <span class="thumb-icon">🌱</span>
+          <span class="thumb-label">Biotechnologia</span>
+        </div>
+        <div class="play-overlay"><span class="play-btn-big">▶</span></div>
+      </div>
+      <div class="video-info">
+        <span class="video-tag">BIOTECH</span>
+        <h4>Biotechnologia — Przyszłość Nauki</h4>
+        <p>Przegląd zastosowań biotechnologii molekularnej w przemyśle i medycynie.</p>
+      </div>
+    </div>
+
+    <div class="video-card" onclick="openVideo('https://www.youtube.com/embed/7H3ksmxwpWc')">
+      <div class="video-thumb">
+        <div class="video-thumb-placeholder" style="background:linear-gradient(135deg,#041428,#2a1a04)">
+          <span class="thumb-icon">🌾</span>
+          <span class="thumb-label">Soja GMO</span>
+        </div>
+        <div class="play-overlay"><span class="play-btn-big">▶</span></div>
+      </div>
+      <div class="video-info">
+        <span class="video-tag">SOJA</span>
+        <h4>Soja GMO — Prawda i Mity</h4>
+        <p>Gdzie trafia soja GMO, jak jest produkowana i co mówią badania naukowe.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VIDEO MODAL -->
+<div id="videoModal" class="video-modal" onclick="closeVideo(event)">
+  <div class="video-modal-inner">
+    <button class="modal-close" onclick="closeVideo()">✕</button>
+    <iframe id="videoFrame" src="" frameborder="0" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+  </div>
+</div>
+
+<!-- WNIOSKI -->
+<section id="wnioski" class="holo-section">
+  <div class="section-label">// MODUŁ 06 — WNIOSKI</div>
+  <h2 class="section-title cyan">PODSUMOWANIE I WNIOSKI</h2>
+  <div class="holo-card wide">
+    <div class="card-glow cyan-glow"></div>
+    <p>Biotechnologia molekularna i GMO to tematy budzące wiele kontrowersji. Z jednej strony oferują ogromne możliwości w walce z głodem, chorobami i zmianami klimatycznymi. Z drugiej — niosą ze sobą realne ryzyka ekologiczne, zdrowotne i etyczne.</p>
+    <div class="verdict-grid">
+      <div class="verdict-card green-verdict">
+        <span class="verdict-icon">🟢</span>
+        <h4>Potencjał</h4>
+        <p>Biotechnologia może rozwiązać kluczowe problemy ludzkości — głód, choroby, zmiany klimatu.</p>
+      </div>
+      <div class="verdict-card yellow-verdict">
+        <span class="verdict-icon">🟡</span>
+        <h4>Ostrożność</h4>
+        <p>Konieczne są długoterminowe badania, transparentność i ścisłe regulacje prawne.</p>
+      </div>
+      <div class="verdict-card red-verdict">
+        <span class="verdict-icon">🔴</span>
+        <h4>Ryzyko</h4>
+        <p>Bez odpowiedniego nadzoru technologia może prowadzić do nieodwracalnych szkód.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRA BIO-PAC-MAN -->
+<section id="gra" class="holo-section">
+  <div class="section-label">// MODUŁ 08 — MINI GRA</div>
+  <h2 class="section-title green">BIO-PAC-MAN</h2>
+  <div class="holo-card wide game-card">
+    <div class="card-glow green-glow"></div>
+    <p class="game-desc">Steruj komórką DNA i zbieraj nukleotydy! Unikaj wirusów GMO. Użyj strzałek lub WASD.</p>
+    <div class="game-wrap">
+      <div class="game-hud">
+        <span class="hud-item">🧬 WYNIK: <span id="gameScore">0</span></span>
+        <span class="hud-item">❤️ ŻYCIA: <span id="gameLives">3</span></span>
+        <span class="hud-item">⚗️ POZIOM: <span id="gameLevel">1</span></span>
+      </div>
+      <canvas id="gameCanvas" width="560" height="420"></canvas>
+      <div class="game-controls">
+        <button class="action-btn" id="startGameBtn">▶ START GRY</button>
+        <button class="action-btn" id="resetGameBtn">↺ RESET</button>
+      </div>
+      <div class="game-keys">
+        <span>⬆⬇⬅➡ lub WASD — ruch</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEST WIEDZY -->
+<section id="test" class="holo-section">
+  <div class="section-label">// MODUŁ 09 — TEST WIEDZY</div>
+  <div class="holo-card wide test-intro-card">
+    <div class="card-glow cyan-glow"></div>
+    <div class="test-intro-text">
+      <p class="test-congrats">Zapoznałeś się z wszystkim? To świetnie!</p>
+      <p>Przeszedłeś przez biotechnologię molekularną, poznałeś korzyści i zagrożenia GMO, dowiedziałeś się gdzie kryje się soja transgeniczna w codziennym życiu — i może nawet pokonałeś kilka wirusów w grze. Teraz możesz sprawdzić, ile z tego zostało w głowie. Przejdź do testu wiedzy z biotechnologii i GMO — 10 pytań, każde z czterema odpowiedziami. Powodzenia!</p>
+    </div>
+    <button class="action-btn start-test-btn" id="startTestBtn">ROZPOCZNIJ TEST</button>
+  </div>
+
+  <div id="quizContainer" class="quiz-container" style="display:none">
+    <div class="quiz-progress-wrap">
+      <div class="quiz-progress-bar"><div id="quizProgressFill" class="quiz-progress-fill"></div></div>
+      <span id="quizProgressLabel" class="quiz-progress-label">Pytanie 1 / 10</span>
+    </div>
+    <div class="holo-card wide quiz-card">
+      <div class="card-glow cyan-glow"></div>
+      <div id="quizQuestion" class="quiz-question"></div>
+      <div id="quizAnswers" class="quiz-answers"></div>
+      <div id="quizFeedback" class="quiz-feedback"></div>
+    </div>
+  </div>
+
+  <div id="quizResult" class="holo-card wide quiz-result-card" style="display:none">
+    <div class="card-glow green-glow"></div>
+    <div id="quizResultContent"></div>
+    <button class="action-btn" id="retryTestBtn">SPRÓBUJ PONOWNIE</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="holo-footer">
+  <div class="footer-corner tl"></div>
+  <div class="footer-corner tr"></div>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-logo">🧬 BIOTECH LAB</div>
+      <p class="footer-desc">Strona edukacyjna poświęcona biotechnologii molekularnej i organizmom modyfikowanym genetycznie.</p>
+      <div class="creator-badge">
+        <span class="creator-label">TWÓRCA</span>
+        <span class="creator-name">Roger S.</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-heading">📚 ŹRÓDŁA WIEDZY</h4>
+      <div class="footer-links">
+        <a href="https://www.who.int/news-room/questions-and-answers/item/food-genetically-modified" target="_blank" class="footer-link">WHO — GMO i bezpieczeństwo żywności</a>
+        <a href="https://www.efsa.europa.eu/en/topics/topic/gmo" target="_blank" class="footer-link">EFSA — Europejski Urząd ds. Bezpieczeństwa Żywności</a>
+        <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3791249/" target="_blank" class="footer-link">PubMed — Badania nad GMO (meta-analiza)</a>
+        <a href="https://www.isaaa.org/resources/publications/briefs/55/" target="_blank" class="footer-link">ISAAA — Globalne statystyki upraw GMO</a>
+        <a href="https://www.nature.com/subjects/gm-crops" target="_blank" class="footer-link">Nature — Artykuły naukowe o GMO</a>
+        <a href="https://ec.europa.eu/food/plant/gmo_en" target="_blank" class="footer-link">Komisja Europejska — Regulacje GMO w UE</a>
+        <a href="https://www.britannica.com/science/biotechnology" target="_blank" class="footer-link">Britannica — Biotechnologia</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-heading">NAWIGACJA</h4>
+      <div class="footer-links">
+        <a href="#intro" class="footer-link">Wprowadzenie</a>
+        <a href="#korzysci" class="footer-link">Korzyści</a>
+        <a href="#zagrozenia" class="footer-link">Zagrożenia</a>
+        <a href="#gmo" class="footer-link">GMO</a>
+        <a href="#soja" class="footer-link">Soja GMO</a>
+        <a href="#wnioski" class="footer-link">Wnioski</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-heading">AKCJE</h4>
+      <div class="footer-btns">
+        <button class="action-btn" onclick="window.print()">🖨️ DRUKUJ STRONĘ</button>
+        <button class="action-btn" id="themeBtn" onclick="toggleTheme()">☀️ JASNY MOTYW</button>
+        <button class="action-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆️ POWRÓT NA GÓRĘ</button>
+        <button class="action-btn" id="shareBtn">📤 UDOSTĘPNIJ</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Roger S. — Wszelkie prawa zastrzeżone</span>
+    <span class="footer-tag">BIOTECHNOLOGIA MOLEKULARNA v1.0</span>
+  </div>
+</footer>
+
+<div id="toast" class="toast">✅ Link skopiowany do schowka!</div>
+
+<script src="script.js"></script>
+</body>
+</html>
