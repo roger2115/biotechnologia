@@ -50,17 +50,31 @@ function animate() {
 animate();
 
 // ============================================================
-// AUDIO — lazy init
+// AUDIO — lazy init, only after user gesture
 // ============================================================
 let audioCtx = null;
+let audioUnlocked = false;
+
+function unlockAudio() {
+  if (audioUnlocked) return;
+  audioUnlocked = true;
+  audioCtx = new AudioContext();
+}
+
 function getAudioCtx() {
-  if (!audioCtx) audioCtx = new AudioContext();
+  if (!audioCtx) return null;
   if (audioCtx.state === 'suspended') audioCtx.resume();
   return audioCtx;
 }
+
+// Create AudioContext only after first real user gesture
+document.addEventListener('click', unlockAudio, { once: true });
+document.addEventListener('keydown', unlockAudio, { once: true });
+
 function playHoverSound() {
   try {
-    const ac = getAudioCtx(), osc = ac.createOscillator(), g = ac.createGain();
+    const ac = getAudioCtx(); if (!ac) return;
+    const osc = ac.createOscillator(), g = ac.createGain();
     osc.connect(g); g.connect(ac.destination); osc.type = 'sine';
     osc.frequency.setValueAtTime(880, ac.currentTime);
     osc.frequency.exponentialRampToValueAtTime(1200, ac.currentTime + 0.08);
@@ -71,7 +85,8 @@ function playHoverSound() {
 }
 function playClickSound() {
   try {
-    const ac = getAudioCtx(), osc = ac.createOscillator(), g = ac.createGain();
+    const ac = getAudioCtx(); if (!ac) return;
+    const osc = ac.createOscillator(), g = ac.createGain();
     osc.connect(g); g.connect(ac.destination); osc.type = 'triangle';
     osc.frequency.setValueAtTime(600, ac.currentTime);
     osc.frequency.exponentialRampToValueAtTime(300, ac.currentTime + 0.15);
@@ -110,7 +125,7 @@ document.addEventListener('keydown', tryAutoplay, { once: true });
 document.addEventListener('scroll', tryAutoplay, { once: true });
 
 musicToggle.addEventListener('click', () => {
-  getAudioCtx();
+  unlockAudio();
   if (themeAudio.paused) {
     themeAudio.play().then(() => {
       musicToggle.textContent = '⏸ PAUSE';
@@ -596,7 +611,7 @@ function drawGame() {
 }
 
 function startGame() {
-  getAudioCtx();
+  unlockAudio();
   if (gameOver) initGame();
   gameRunning = true;
   gLastTime = performance.now();
