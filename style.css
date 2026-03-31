@@ -1,4 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap');
+/*
+  Biotechnologia Molekularna — strona edukacyjna
+  Autor: ten_roger
+  © 2025 ten_roger. Wszelkie prawa zastrzeżone.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&family=Space+Grotesk:wght@300;400;600&display=swap');
 
 :root {
   --cyan: #00f5ff;
@@ -20,20 +26,20 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: #c8e8ff;
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
   font-size: 16px;
   overflow-x: hidden;
   min-height: 100vh;
 }
 
-/* CANVAS BG */
+/* tło canvas */
 #bgCanvas {
   position: fixed; top: 0; left: 0;
   width: 100%; height: 100%;
   z-index: 0; pointer-events: none;
 }
 
-/* SCANLINE */
+/* linie skanowania */
 .scanline {
   position: fixed; top: 0; left: 0;
   width: 100%; height: 100%;
@@ -57,7 +63,7 @@ body {
 /* All content above canvas */
 header, nav, .ticker-wrap, section, footer { position: relative; z-index: 2; }
 
-/* HEADER */
+/* nagłówek */
 .holo-header {
   text-align: center;
   padding: 60px 20px 40px;
@@ -97,7 +103,7 @@ h1.glitch {
 }
 
 .subtitle {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
   font-size: 1.1rem;
   color: rgba(0,200,255,0.7);
   letter-spacing: 3px;
@@ -122,7 +128,7 @@ h1.glitch {
   50% { box-shadow: 0 0 15px rgba(0,200,255,0.7); }
 }
 
-/* NAV */
+/* nawigacja */
 .holo-nav {
   display: flex; flex-wrap: wrap; justify-content: center;
   gap: 8px; padding: 16px 20px;
@@ -151,7 +157,7 @@ h1.glitch {
   color: #fff;
 }
 
-/* TICKER */
+/* pasek przewijający */
 .ticker-wrap {
   overflow: hidden;
   background: rgba(0,200,255,0.08);
@@ -173,7 +179,7 @@ h1.glitch {
   100% { transform: translateX(-100%); }
 }
 
-/* SECTIONS */
+/* sekcje treści */
 .holo-section {
   max-width: 1200px;
   margin: 0 auto;
@@ -209,7 +215,7 @@ h1.glitch {
 .section-title.cyan { color: var(--cyan); }
 .section-title.yellow { color: var(--yellow); }
 
-/* CARDS */
+/* karty */
 .holo-card {
   background: var(--panel);
   border: 1px solid var(--border);
@@ -263,7 +269,7 @@ h1.glitch {
 
 .cards-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
 
-/* LISTS */
+/* listy */
 .holo-list { list-style: none; padding: 0; }
 .holo-list li {
   padding: 7px 0 7px 20px;
@@ -346,7 +352,7 @@ h1.glitch {
 .red-verdict { background: rgba(255,50,100,0.07); border: 1px solid rgba(255,50,100,0.3); }
 .red-verdict h4 { color: var(--red); }
 
-/* FOOTER */
+/* stopka */
 .holo-footer {
   background: rgba(0,5,20,0.95);
   border-top: 1px solid var(--border);
@@ -448,7 +454,7 @@ h1.glitch {
   letter-spacing: 2px;
 }
 
-/* TOAST */
+/* powiadomienie toast */
 .toast {
   position: fixed; bottom: 30px; right: 30px;
   background: rgba(0,200,255,0.15);
@@ -464,7 +470,7 @@ h1.glitch {
 }
 .toast.show { opacity: 1; }
 
-/* SCROLL REVEAL */
+/* animacja pojawiania się sekcji */
 .holo-section { opacity: 0; transform: translateY(30px); transition: opacity 0.7s, transform 0.7s; }
 .holo-section.visible { opacity: 1; transform: translateY(0); }
 
@@ -476,7 +482,7 @@ h1.glitch {
   .footer-bottom { flex-direction: column; text-align: center; }
 }
 
-/* ===== LIGHT MODE ===== */
+/* jasny motyw */
 body.light-mode {
   background: #e8f4ff;
   color: #0a1a2e;
@@ -620,7 +626,7 @@ body.light-mode .toast {
   color: #0055cc;
 }
 
-/* ===== MUSIC PLAYER ===== */
+/* odtwarzacz muzyki */
 .music-player {
   position: fixed; bottom: 20px; left: 20px; z-index: 200;
   display: flex; align-items: center; gap: 12px;
@@ -660,7 +666,7 @@ body.light-mode .toast {
   width: 100%; text-align: center;
 }
 
-/* ===== VIDEOS ===== */
+/* karty wideo */
 .videos-grid {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;
@@ -718,7 +724,7 @@ body.light-mode .toast {
 }
 .modal-close:hover { background: var(--red); color: #fff; }
 
-/* ===== GAME ===== */
+/* gra */
 .game-card { text-align: center; }
 .game-desc { color: #7aaccc; margin-bottom: 20px; font-size: 0.95rem; }
 .game-wrap { display: inline-block; }
@@ -740,7 +746,7 @@ body.light-mode .toast {
 .game-controls { display: flex; gap: 12px; justify-content: center; margin-top: 14px; }
 .game-keys { margin-top: 10px; font-size: 0.8rem; color: rgba(0,200,255,0.5); letter-spacing: 1px; }
 
-/* ===== QUIZ / TEST ===== */
+/* quiz */
 .test-intro-card { text-align: center; }
 .test-congrats {
   font-family: 'Orbitron', monospace;
@@ -784,7 +790,7 @@ body.light-mode .toast {
   background: rgba(0,200,255,0.05);
   border: 1px solid rgba(0,200,255,0.25);
   color: #c8e8ff; padding: 12px 18px;
-  font-family: 'Rajdhani', sans-serif; font-size: 1rem;
+  font-family: 'Space Grotesk', 'Inter', sans-serif; font-size: 1rem;
   text-align: left; cursor: pointer;
   transition: all 0.2s;
   clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
@@ -813,7 +819,7 @@ body.light-mode .toast {
 /* Fix theme button text (no emoji) */
 #themeBtn { letter-spacing: 1px; }
 
-/* ===== VIDEO THUMB PLACEHOLDER ===== */
+/* miniatura wideo — placeholder gdy brak obrazka */
 .video-thumb-placeholder {
   width: 100%; aspect-ratio: 16/9;
   display: flex; flex-direction: column;
@@ -825,3 +831,89 @@ body.light-mode .toast {
   font-family: 'Orbitron', monospace; font-size: 0.7rem;
   color: rgba(0,200,255,0.6); letter-spacing: 2px;
 }
+
+/* ekran ładowania */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #020b18;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+#loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-logo {
+  font-family: 'Orbitron', monospace;
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-weight: 900;
+  color: var(--cyan);
+  letter-spacing: 6px;
+  text-shadow: 0 0 20px var(--cyan), 0 0 60px rgba(0,200,255,0.3);
+  animation: loaderPulse 1.5s ease-in-out infinite;
+}
+@keyframes loaderPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.loader-sub {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.65rem;
+  color: rgba(0,200,255,0.45);
+  letter-spacing: 4px;
+  margin-top: -20px;
+}
+
+.loader-bar-wrap {
+  width: min(420px, 80vw);
+  height: 3px;
+  background: rgba(0,200,255,0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+.loader-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+  border-radius: 2px;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 12px var(--cyan);
+}
+
+.loader-status {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.6rem;
+  color: rgba(0,200,255,0.5);
+  letter-spacing: 2px;
+  min-height: 1em;
+}
+
+.loader-pct {
+  font-family: 'Orbitron', monospace;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--cyan);
+  text-shadow: 0 0 20px var(--cyan);
+  margin-top: -16px;
+}
+
+.loader-corners span {
+  position: fixed;
+  width: 24px; height: 24px;
+  border-color: rgba(0,200,255,0.4);
+  border-style: solid;
+}
+.loader-corners span:nth-child(1) { top: 20px; left: 20px; border-width: 2px 0 0 2px; }
+.loader-corners span:nth-child(2) { top: 20px; right: 20px; border-width: 2px 2px 0 0; }
+.loader-corners span:nth-child(3) { bottom: 20px; left: 20px; border-width: 0 0 2px 2px; }
+.loader-corners span:nth-child(4) { bottom: 20px; right: 20px; border-width: 0 2px 2px 0; }

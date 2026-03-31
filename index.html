@@ -4,14 +4,41 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Biotechnologia Molekularna | GMO</title>
+<!--
+  Projekt: Biotechnologia Molekularna — Korzyści, Zagrożenia i GMO
+  Autor:   ten_roger
+  © 2025 ten_roger. Wszelkie prawa zastrzeżone.
+  Kopiowanie lub rozpowszechnianie bez zgody autora jest zabronione.
+-->
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<!-- ekran startowy ładowania -->
+<div id="loader">
+  <div class="loader-corners">
+    <span></span><span></span><span></span><span></span>
+  </div>
+  <div class="loader-logo">BIOTECHNOLOGIA</div>
+  <div class="loader-sub">MOLEKULARNA // GMO // INŻYNIERIA GENETYCZNA</div>
+  <div class="loader-pct" id="loaderPct">0%</div>
+  <div class="loader-bar-wrap">
+    <div class="loader-bar" id="loaderBar"></div>
+  </div>
+  <div class="loader-status" id="loaderStatus">INICJALIZACJA SYSTEMU...</div>
+</div>
+
+<!-- tło cząsteczkowe i efekty wizualne -->
 <canvas id="bgCanvas"></canvas>
 <div class="scanline"></div>
 <div class="noise"></div>
 
-<!-- HEADER -->
+<!-- tło cząsteczkowe i efekty wizualne -->
+<canvas id="bgCanvas"></canvas>
+<div class="scanline"></div>
+<div class="noise"></div>
+
+<!-- nagłówek strony -->
 <header class="holo-header">
   <div class="header-corner tl"></div>
   <div class="header-corner tr"></div>
@@ -29,7 +56,7 @@
   </div>
 </header>
 
-<!-- NAV -->
+<!-- nawigacja górna -->
 <nav class="holo-nav">
   <a href="#intro" class="nav-btn">WPROWADZENIE</a>
   <a href="#korzysci" class="nav-btn">KORZYŚCI</a>
@@ -41,7 +68,7 @@
   <a href="#test" class="nav-btn">TEST WIEDZY</a>
 </nav>
 
-<!-- MUSIC PLAYER -->
+<!-- odtwarzacz muzyki w lewym dolnym rogu -->
 <div class="music-player" id="musicPlayer">
   <audio id="themeAudio" loop>
     <source src="Hans Zimmer  (Interstellar Main Theme) - Space 4k - no copyright Interstaller inspired Music.mp3" type="audio/mpeg">
@@ -54,14 +81,14 @@
   <span class="music-label" id="musicLabel">Hans Zimmer — Interstellar Theme</span>
 </div>
 
-<!-- TICKER -->
+<!-- pasek przewijający się z hasłami -->
 <div class="ticker-wrap">
   <div class="ticker">
     ⬡ BIOTECHNOLOGIA MOLEKULARNA &nbsp;&nbsp; ⬡ GMO — ORGANIZMY MODYFIKOWANE GENETYCZNIE &nbsp;&nbsp; ⬡ SOJA TRANSGENICZNA &nbsp;&nbsp; ⬡ INŻYNIERIA GENETYCZNA &nbsp;&nbsp; ⬡ CRISPR-CAS9 &nbsp;&nbsp; ⬡ REKOMBINACJA DNA &nbsp;&nbsp; ⬡ BIOETYKA &nbsp;&nbsp; ⬡ BEZPIECZEŃSTWO ŻYWNOŚCI &nbsp;&nbsp;
   </div>
 </div>
 
-<!-- INTRO SECTION -->
+<!-- sekcja wprowadzenia -->
 <section id="intro" class="holo-section">
   <div class="section-label">// MODUŁ 01 — WPROWADZENIE</div>
   <div class="holo-card wide">
@@ -79,7 +106,7 @@
   </div>
 </section>
 
-<!-- KORZYSCI -->
+<!-- sekcja korzyści -->
 <section id="korzysci" class="holo-section">
   <div class="section-label">// MODUŁ 02 — KORZYŚCI</div>
   <h2 class="section-title green">KORZYŚCI BIOTECHNOLOGII</h2>
@@ -123,7 +150,7 @@
   </div>
 </section>
 
-<!-- ZAGROZENIA -->
+<!-- sekcja zagrożeń -->
 <section id="zagrozenia" class="holo-section">
   <div class="section-label">// MODUŁ 03 — ZAGROŻENIA</div>
   <h2 class="section-title red">ZAGROŻENIA I RYZYKA</h2>
@@ -167,7 +194,7 @@
   </div>
 </section>
 
-<!-- GMO SECTION -->
+<!-- sekcja GMO -->
 <section id="gmo" class="holo-section">
   <div class="section-label">// MODUŁ 04 — GMO</div>
   <h2 class="section-title cyan">ORGANIZMY MODYFIKOWANE GENETYCZNIE</h2>
@@ -216,7 +243,7 @@
   </div>
 </section>
 
-<!-- SOJA SECTION -->
+<!-- sekcja soja GMO -->
 <section id="soja" class="holo-section">
   <div class="section-label">// MODUŁ 05 — SOJA GMO</div>
   <h2 class="section-title yellow">SOJA TRANSGENICZNA — GDZIE JEST DODAWANA?</h2>
@@ -354,7 +381,7 @@
 </section>
 
 
-<!-- WNIOSKI -->
+<!-- sekcja wnioski -->
 <section id="wnioski" class="holo-section">
   <div class="section-label">// MODUŁ 06 — WNIOSKI</div>
   <h2 class="section-title cyan">PODSUMOWANIE I WNIOSKI</h2>
@@ -381,7 +408,7 @@
   </div>
 </section>
 
-<!-- GRA BIO-PAC-MAN -->
+<!-- mini gra -->
 <section id="gra" class="holo-section">
   <div class="section-label">// MODUŁ 08 — MINI GRA</div>
   <h2 class="section-title green">BIO-PAC-MAN</h2>
@@ -406,7 +433,7 @@
   </div>
 </section>
 
-<!-- TEST WIEDZY -->
+<!-- quiz wiedzy -->
 <section id="test" class="holo-section">
   <div class="section-label">// MODUŁ 09 — TEST WIEDZY</div>
   <div class="holo-card wide test-intro-card">
@@ -438,7 +465,7 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- stopka -->
 <footer class="holo-footer">
   <div class="footer-corner tl"></div>
   <div class="footer-corner tr"></div>

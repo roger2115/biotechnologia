@@ -1,6 +1,39 @@
-// ============================================================
-// CANVAS BACKGROUND
-// ============================================================
+// © 2025 ten_roger — projekt edukacyjny z biotechnologii
+// Wszelkie prawa zastrzeżone. Nie kopiować bez zgody autora.
+
+// animacja startupowa
+(function runLoader() {
+  const bar    = document.getElementById('loaderBar');
+  const pct    = document.getElementById('loaderPct');
+  const status = document.getElementById('loaderStatus');
+  const loader = document.getElementById('loader');
+
+  const steps = [
+    { p: 12,  msg: 'ŁADOWANIE MODUŁÓW DNA...' },
+    { p: 28,  msg: 'INICJALIZACJA BAZY DANYCH GMO...' },
+    { p: 45,  msg: 'KALIBRACJA SEKWENCJI CRISPR...' },
+    { p: 63,  msg: 'KOMPILACJA DANYCH BIOTECHNOLOGICZNYCH...' },
+    { p: 80,  msg: 'RENDEROWANIE INTERFEJSU...' },
+    { p: 94,  msg: 'WERYFIKACJA PROTOKOŁÓW...' },
+    { p: 100, msg: 'SYSTEM GOTOWY' },
+  ];
+
+  let i = 0;
+  function next() {
+    if (i >= steps.length) {
+      setTimeout(() => loader.classList.add('hidden'), 400);
+      return;
+    }
+    const s = steps[i++];
+    bar.style.width = s.p + '%';
+    pct.textContent = s.p + '%';
+    status.textContent = s.msg;
+    setTimeout(next, i === steps.length ? 300 : 260 + Math.random() * 140);
+  }
+  setTimeout(next, 200);
+})();
+
+// animowane tło — cząsteczki i siatka
 const canvas = document.getElementById('bgCanvas');
 const ctx = canvas.getContext('2d');
 let W, H;
@@ -49,9 +82,7 @@ function animate() {
 }
 animate();
 
-// ============================================================
-// AUDIO — lazy init, only after user gesture
-// ============================================================
+// audio — inicjalizacja dopiero po interakcji użytkownika (wymóg przeglądarek)
 let audioCtx = null;
 let audioUnlocked = false;
 
@@ -67,32 +98,53 @@ function getAudioCtx() {
   return audioCtx;
 }
 
-// Create AudioContext only after first real user gesture
+// AudioContext tworzymy dopiero po pierwszym kliknięciu lub naciśnięciu klawisza
 document.addEventListener('click', unlockAudio, { once: true });
 document.addEventListener('keydown', unlockAudio, { once: true });
 
 function playHoverSound() {
   try {
     const ac = getAudioCtx(); if (!ac) return;
-    const osc = ac.createOscillator(), g = ac.createGain();
-    osc.connect(g); g.connect(ac.destination); osc.type = 'sine';
-    osc.frequency.setValueAtTime(880, ac.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(1200, ac.currentTime + 0.08);
-    g.gain.setValueAtTime(0.04, ac.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.12);
-    osc.start(); osc.stop(ac.currentTime + 0.12);
+    const osc = ac.createOscillator();
+    const gain = ac.createGain();
+    const filter = ac.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 1800;
+    osc.connect(filter); filter.connect(gain); gain.connect(ac.destination);
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(320, ac.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(480, ac.currentTime + 0.06);
+    gain.gain.setValueAtTime(0.07, ac.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.18);
+    osc.start(); osc.stop(ac.currentTime + 0.18);
   } catch(e) {}
 }
+
 function playClickSound() {
   try {
     const ac = getAudioCtx(); if (!ac) return;
-    const osc = ac.createOscillator(), g = ac.createGain();
-    osc.connect(g); g.connect(ac.destination); osc.type = 'triangle';
-    osc.frequency.setValueAtTime(600, ac.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(300, ac.currentTime + 0.15);
-    g.gain.setValueAtTime(0.06, ac.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.15);
-    osc.start(); osc.stop(ac.currentTime + 0.15);
+
+    // niski "thud"
+    const osc1 = ac.createOscillator();
+    const g1 = ac.createGain();
+    osc1.connect(g1); g1.connect(ac.destination);
+    osc1.type = 'sine';
+    osc1.frequency.setValueAtTime(180, ac.currentTime);
+    osc1.frequency.exponentialRampToValueAtTime(60, ac.currentTime + 0.18);
+    g1.gain.setValueAtTime(0.18, ac.currentTime);
+    g1.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.18);
+    osc1.start(); osc1.stop(ac.currentTime + 0.18);
+
+    // krótki "click" na górze
+    const osc2 = ac.createOscillator();
+    const g2 = ac.createGain();
+    osc2.connect(g2); g2.connect(ac.destination);
+    osc2.type = 'square';
+    osc2.frequency.setValueAtTime(900, ac.currentTime);
+    osc2.frequency.exponentialRampToValueAtTime(400, ac.currentTime + 0.06);
+    g2.gain.setValueAtTime(0.04, ac.currentTime);
+    g2.gain.exponentialRampToValueAtTime(0.001, ac.currentTime + 0.06);
+    osc2.start(); osc2.stop(ac.currentTime + 0.06);
   } catch(e) {}
 }
 function attachHoverSounds() {
@@ -103,9 +155,7 @@ function attachHoverSounds() {
 }
 attachHoverSounds();
 
-// ============================================================
-// MUSIC PLAYER
-// ============================================================
+// odtwarzacz muzyki
 const themeAudio = document.getElementById('themeAudio');
 const musicToggle = document.getElementById('musicToggle');
 const volSlider = document.getElementById('volSlider');
@@ -139,27 +189,21 @@ musicToggle.addEventListener('click', () => {
 });
 volSlider.addEventListener('input', () => { themeAudio.volume = parseFloat(volSlider.value); });
 
-// ============================================================
 // VIDEO MODAL
 // ============================================================
-// VIDEO — otwiera wyszukiwanie YouTube w nowej karcie
-// ============================================================
+// otwiera wyszukiwanie YouTube w nowej karcie
 function openVideo(query) {
   playClickSound();
   window.open('https://www.youtube.com/results?search_query=' + encodeURIComponent(query), '_blank');
 }
 
-// ============================================================
-// SCROLL REVEAL
-// ============================================================
+// animacja pojawiania się sekcji przy scrollowaniu
 const revealObs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
 }, { threshold: 0.08 });
 document.querySelectorAll('.holo-section').forEach(s => revealObs.observe(s));
 
-// ============================================================
-// ACTIVE NAV
-// ============================================================
+// podświetlanie aktywnego linku w nawigacji
 window.addEventListener('scroll', () => {
   let current = '';
   document.querySelectorAll('section[id]').forEach(s => { if (window.scrollY >= s.offsetTop - 130) current = s.id; });
@@ -170,9 +214,7 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// ============================================================
-// CARD MOUSE GLOW
-// ============================================================
+// efekt podświetlenia karty pod kursorem
 document.querySelectorAll('.holo-card').forEach(card => {
   card.addEventListener('mousemove', e => {
     const r = card.getBoundingClientRect();
@@ -181,9 +223,7 @@ document.querySelectorAll('.holo-card').forEach(card => {
   card.addEventListener('mouseleave', () => { card.style.background = ''; });
 });
 
-// ============================================================
-// TYPING EFFECT
-// ============================================================
+// efekt pisania w podtytule nagłówka
 const subtitle = document.querySelector('.subtitle');
 if (subtitle) {
   const text = subtitle.textContent; subtitle.textContent = ''; let i = 0;
@@ -191,9 +231,7 @@ if (subtitle) {
   setTimeout(type, 900);
 }
 
-// ============================================================
-// COUNTER ANIMATION
-// ============================================================
+// animacja liczników w kafelkach dat
 const tileObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -214,9 +252,7 @@ const tileObs = new IntersectionObserver(entries => {
 }, { threshold: 0.5 });
 document.querySelectorAll('.tile-num').forEach(el => tileObs.observe(el));
 
-// ============================================================
-// SHARE
-// ============================================================
+// przycisk udostępniania — kopiuje link do schowka
 document.getElementById('shareBtn').addEventListener('click', () => {
   navigator.clipboard.writeText(window.location.href).then(() => {
     const toast = document.getElementById('toast');
@@ -225,17 +261,13 @@ document.getElementById('shareBtn').addEventListener('click', () => {
   });
 });
 
-// ============================================================
-// THEME TOGGLE
-// ============================================================
+// przełącznik jasny/ciemny motyw
 function toggleTheme() {
   const isLight = document.body.classList.toggle('light-mode');
   document.getElementById('themeBtn').textContent = isLight ? '🌙 CIEMNY MOTYW' : '☀️ JASNY MOTYW';
 }
 
-// ============================================================
-// QUIZ
-// ============================================================
+// quiz wiedzy — pytania i logika odpowiedzi
 const quizData = [
   { q: 'Co oznacza skrót GMO?', a: ['Genetycznie Modyfikowane Organizmy','Globalny Monitor Organiczny','Genetyczny Model Odporności','Główna Metoda Ochrony'], correct: 0 },
   { q: 'Który procent światowej produkcji soi stanowi soja GMO?', a: ['Około 30%','Około 50%','Około 77%','Około 95%'], correct: 2 },
@@ -302,13 +334,10 @@ document.getElementById('retryTestBtn').addEventListener('click', () => {
   startQuiz();
 });
 
-// ============================================================
-// DNA-RUNNER — gra biotechnologiczna
-// Grasz jako enzym restrykcyjny (nożyczki).
-// Zbierasz nukleotydy A/T/G/C, unikasz wirusów GMO,
-// bakterii patogennych i bakteriofagów.
-// Power-up: CRISPR-Cas9 (✂) — tymczasowa moc.
-// ============================================================
+// gra DNA-Runner
+// grasz jako enzym restrykcyjny, zbierasz nukleotydy A/T/G/C
+// unikasz wirusów, bakterii i bakteriofagów
+// power-up CRISPR daje chwilową nietykalność
 const gc = document.getElementById('gameCanvas');
 const gctx = gc.getContext('2d');
 const CELL = 28, COLS = 20, ROWS = 15;
@@ -321,7 +350,7 @@ const GC = {
   scared:'#223355', text:'#00f5ff'
 };
 
-// Mapa: 1=ściana DNA, 2=puste, 3=CRISPR, 0=A, 4=T, 5=G, 6=C
+// mapa: 1=ściana, 2=puste, 3=CRISPR power-up, 0=A, 4=T, 5=G, 6=C
 const MAP_TPL = [
   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
   [1,3,0,4,5,6,0,4,5,1,1,6,0,4,5,6,0,4,3,1],
@@ -626,18 +655,18 @@ document.addEventListener('keydown', e => {
   }
 });
 
-// Dźwięki gry
+// dźwięki gry
 function gPlayDot() {
-  try { const ac=getAudioCtx(),o=ac.createOscillator(),g=ac.createGain(); o.connect(g);g.connect(ac.destination); o.type='sine';o.frequency.value=660; g.gain.setValueAtTime(0.025,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.06); o.start();o.stop(ac.currentTime+0.06); } catch(e){}
+  try { const ac=getAudioCtx(); if(!ac)return; const o=ac.createOscillator(),g=ac.createGain(); o.connect(g);g.connect(ac.destination); o.type='sine';o.frequency.value=660; g.gain.setValueAtTime(0.025,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.06); o.start();o.stop(ac.currentTime+0.06); } catch(e){}
 }
 function gPlayCrispr() {
-  try { const ac=getAudioCtx(),o=ac.createOscillator(),g=ac.createGain(); o.connect(g);g.connect(ac.destination); o.type='sine';o.frequency.setValueAtTime(200,ac.currentTime);o.frequency.exponentialRampToValueAtTime(1000,ac.currentTime+0.35); g.gain.setValueAtTime(0.09,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.35); o.start();o.stop(ac.currentTime+0.35); } catch(e){}
+  try { const ac=getAudioCtx(); if(!ac)return; const o=ac.createOscillator(),g=ac.createGain(); o.connect(g);g.connect(ac.destination); o.type='sine';o.frequency.setValueAtTime(200,ac.currentTime);o.frequency.exponentialRampToValueAtTime(1000,ac.currentTime+0.35); g.gain.setValueAtTime(0.09,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.35); o.start();o.stop(ac.currentTime+0.35); } catch(e){}
 }
 function gPlayEat() {
-  try { const ac=getAudioCtx(),o=ac.createOscillator(),g=ac.createGain(); o.connect(g);g.connect(ac.destination); o.type='sawtooth';o.frequency.setValueAtTime(700,ac.currentTime);o.frequency.exponentialRampToValueAtTime(150,ac.currentTime+0.25); g.gain.setValueAtTime(0.07,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.25); o.start();o.stop(ac.currentTime+0.25); } catch(e){}
+  try { const ac=getAudioCtx(); if(!ac)return; const o=ac.createOscillator(),g=ac.createGain(); o.connect(g);g.connect(ac.destination); o.type='sawtooth';o.frequency.setValueAtTime(700,ac.currentTime);o.frequency.exponentialRampToValueAtTime(150,ac.currentTime+0.25); g.gain.setValueAtTime(0.07,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.25); o.start();o.stop(ac.currentTime+0.25); } catch(e){}
 }
 function gPlayDeath() {
-  try { const ac=getAudioCtx(),o=ac.createOscillator(),g=ac.createGain(); o.connect(g);g.connect(ac.destination); o.type='sawtooth';o.frequency.setValueAtTime(440,ac.currentTime);o.frequency.exponentialRampToValueAtTime(40,ac.currentTime+0.7); g.gain.setValueAtTime(0.1,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.7); o.start();o.stop(ac.currentTime+0.7); } catch(e){}
+  try { const ac=getAudioCtx(); if(!ac)return; const o=ac.createOscillator(),g=ac.createGain(); o.connect(g);g.connect(ac.destination); o.type='sawtooth';o.frequency.setValueAtTime(440,ac.currentTime);o.frequency.exponentialRampToValueAtTime(40,ac.currentTime+0.7); g.gain.setValueAtTime(0.1,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.7); o.start();o.stop(ac.currentTime+0.7); } catch(e){}
 }
 
 initGame();
