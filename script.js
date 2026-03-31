@@ -1,4 +1,4 @@
-// © 2025 ten_roger — projekt edukacyjny z biotechnologii
+﻿// © 2025 ten_roger - projekt edukacyjny z biotechnologii
 // Wszelkie prawa zastrzeżone. Nie kopiować bez zgody autora.
 
 // animacja startupowa
@@ -33,7 +33,7 @@
   setTimeout(next, 200);
 })();
 
-// animowane tło — cząsteczki i siatka
+// animowane tło - cząsteczki i siatka
 const canvas = document.getElementById('bgCanvas');
 const ctx = canvas.getContext('2d');
 let W, H;
@@ -82,7 +82,7 @@ function animate() {
 }
 animate();
 
-// audio — inicjalizacja dopiero po interakcji użytkownika (wymóg przeglądarek)
+// audio - inicjalizacja dopiero po interakcji użytkownika (wymóg przeglądarek)
 let audioCtx = null;
 let audioUnlocked = false;
 
@@ -203,6 +203,83 @@ const revealObs = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 document.querySelectorAll('.holo-section').forEach(s => revealObs.observe(s));
 
+// interaktywna oś czasu
+document.querySelectorAll('.tl-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const popup = document.getElementById('tlPopup');
+    const info = item.dataset.info;
+    const wasActive = item.classList.contains('active');
+    document.querySelectorAll('.tl-item').forEach(i => i.classList.remove('active'));
+    if (wasActive) { popup.style.display = 'none'; return; }
+    item.classList.add('active');
+    popup.textContent = info;
+    popup.style.display = 'block';
+    playClickSound();
+  });
+});
+
+// słownik pojęć
+document.querySelectorAll('.gloss-term').forEach(term => {
+  term.addEventListener('click', () => {
+    const def = document.getElementById('glossDef');
+    const wasActive = term.classList.contains('active');
+    document.querySelectorAll('.gloss-term').forEach(t => t.classList.remove('active'));
+    if (wasActive) { def.style.display = 'none'; return; }
+    term.classList.add('active');
+    def.textContent = term.dataset.def;
+    def.style.display = 'block';
+    playClickSound();
+  });
+});
+
+// akordeon technik
+document.querySelectorAll('.acc-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const item = header.parentElement;
+    const body = item.querySelector('.acc-body');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.acc-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.acc-body').style.display = 'none';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      body.style.display = 'block';
+    }
+    playClickSound();
+  });
+});
+
+// klikalne elementy listy z wyjaśnieniem
+document.querySelectorAll('.exp-list li').forEach(li => {
+  const exp = li.dataset.exp;
+  if (!exp) return;
+  const div = document.createElement('div');
+  div.className = 'li-exp';
+  div.textContent = exp;
+  li.appendChild(div);
+  li.addEventListener('click', e => {
+    if (e.target === div) return;
+    const wasOpen = li.classList.contains('expanded');
+    li.closest('.exp-list').querySelectorAll('li').forEach(l => l.classList.remove('expanded'));
+    if (!wasOpen) { li.classList.add('expanded'); playClickSound(); }
+  });
+});
+
+// tabela porównawcza GMO
+document.querySelectorAll('.cmp-row').forEach(row => {
+  row.addEventListener('click', () => {
+    const detail = document.getElementById('cmpDetail');
+    const wasActive = row.classList.contains('active');
+    document.querySelectorAll('.cmp-row').forEach(r => r.classList.remove('active'));
+    if (wasActive) { detail.style.display = 'none'; return; }
+    row.classList.add('active');
+    detail.textContent = row.dataset.detail;
+    detail.style.display = 'block';
+    playClickSound();
+  });
+});
+
 // podświetlanie aktywnego linku w nawigacji
 window.addEventListener('scroll', () => {
   let current = '';
@@ -252,7 +329,7 @@ const tileObs = new IntersectionObserver(entries => {
 }, { threshold: 0.5 });
 document.querySelectorAll('.tile-num').forEach(el => tileObs.observe(el));
 
-// przycisk udostępniania — kopiuje link do schowka
+// przycisk udostępniania - kopiuje link do schowka
 document.getElementById('shareBtn').addEventListener('click', () => {
   navigator.clipboard.writeText(window.location.href).then(() => {
     const toast = document.getElementById('toast');
@@ -267,7 +344,7 @@ function toggleTheme() {
   document.getElementById('themeBtn').textContent = isLight ? '🌙 CIEMNY MOTYW' : '☀️ JASNY MOTYW';
 }
 
-// quiz wiedzy — pytania i logika odpowiedzi
+// quiz wiedzy - pytania i logika odpowiedzi
 const quizData = [
   { q: 'Co oznacza skrót GMO?', a: ['Genetycznie Modyfikowane Organizmy','Globalny Monitor Organiczny','Genetyczny Model Odporności','Główna Metoda Ochrony'], correct: 0 },
   { q: 'Który procent światowej produkcji soi stanowi soja GMO?', a: ['Około 30%','Około 50%','Około 77%','Około 95%'], correct: 2 },
@@ -324,7 +401,7 @@ function showResult() {
   if (pct >= 90) { msg = 'Wybitny wynik! Jesteś ekspertem biotechnologii.'; color = 'var(--green)'; }
   else if (pct >= 70) { msg = 'Bardzo dobry wynik! Masz solidną wiedzę.'; color = 'var(--cyan)'; }
   else if (pct >= 50) { msg = 'Niezły wynik. Warto jeszcze raz przejrzeć materiał.'; color = 'var(--yellow)'; }
-  else { msg = 'Wróć do materiału i spróbuj ponownie — dasz radę!'; color = 'var(--red)'; }
+  else { msg = 'Wróć do materiału i spróbuj ponownie - dasz radę!'; color = 'var(--red)'; }
   document.getElementById('quizResultContent').innerHTML = `<div class="result-score" style="color:${color}">${quizScore} / ${quizData.length}</div><div class="result-pct" style="color:${color}">${pct}%</div><p class="result-msg">${msg}</p>`;
 }
 document.getElementById('startTestBtn').addEventListener('click', startQuiz);
@@ -576,7 +653,7 @@ function drawGame() {
     gctx.shadowBlur=0;
   });
 
-  // Gracz — enzym restrykcyjny (nożyczki)
+  // Gracz - enzym restrykcyjny (nożyczki)
   const px=gplayer.x*CELL+CELL/2, py=gplayer.y*CELL+CELL/2;
   const angle=Math.atan2(gplayer.dy,gplayer.dx)||0;
   const open=gplayer.sAngle*Math.PI;
@@ -605,14 +682,14 @@ function drawGame() {
     gctx.fillText('DNA-RUNNER',gc.width/2,gc.height/2-55);
     gctx.shadowBlur=0; gctx.font='10px Orbitron,monospace';
     gctx.fillStyle='rgba(0,200,255,0.8)';
-    gctx.fillText('Jesteś enzymem restrykcyjnym — zbieraj nukleotydy!',gc.width/2,gc.height/2-28);
-    const legend=[['A — Adenina',GC.A],['T — Tymina',GC.T],['G — Guanina',GC.G],['C — Cytozyna',GC.C]];
+    gctx.fillText('Jesteś enzymem restrykcyjnym - zbieraj nukleotydy!',gc.width/2,gc.height/2-28);
+    const legend=[['A - Adenina',GC.A],['T - Tymina',GC.T],['G - Guanina',GC.G],['C - Cytozyna',GC.C]];
     legend.forEach(([lbl,c],i)=>{
       gctx.fillStyle=c; gctx.font='10px Orbitron,monospace';
       gctx.fillText(lbl, gc.width/2 + (i<2?-110:110), gc.height/2 - 6 + (i%2)*18);
     });
     gctx.fillStyle=GC.crispr; gctx.font='10px Orbitron,monospace';
-    gctx.fillText('✂ CRISPR = moc — zniszcz patogeny GMO!',gc.width/2,gc.height/2+30);
+    gctx.fillText('✂ CRISPR = moc - zniszcz patogeny GMO!',gc.width/2,gc.height/2+30);
     gctx.fillStyle='rgba(255,50,100,0.7)';
     gctx.fillText('Unikaj: GMO-wirusa  |  Bakterii  |  Bakteriofaga',gc.width/2,gc.height/2+50);
   }
@@ -672,3 +749,145 @@ function gPlayDeath() {
 initGame();
 document.getElementById('startGameBtn').addEventListener('click', startGame);
 document.getElementById('resetGameBtn').addEventListener('click', resetGame);
+
+
+// confetti na dole strony
+(function setupConfetti() {
+  const footer = document.querySelector('.holo-footer');
+  if (!footer) return;
+
+  let fired = false;
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !fired) {
+        fired = true;
+        launchConfetti();
+      }
+    });
+  }, { threshold: 0.4 });
+
+  obs.observe(footer);
+})();
+
+function launchConfetti() {
+  // usuń poprzednie jeśli istnieje
+  const old = document.getElementById('confettiCanvas');
+  if (old) old.remove();
+
+  const canvas = document.createElement('canvas');
+  canvas.id = 'confettiCanvas';
+  canvas.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:99999';
+  document.body.appendChild(canvas);
+
+  // poprawne wymiary z uwzględnieniem DPR
+  const dpr = window.devicePixelRatio || 1;
+  const W = window.innerWidth;
+  const H = window.innerHeight;
+  canvas.width  = W * dpr;
+  canvas.height = H * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  const colors = ['#00f5ff','#00ff88','#ffcc00','#ff3366','#cc00ff','#ffffff','#0080ff'];
+  const pieces = Array.from({length: 240}, () => ({
+    x:     Math.random() * W,
+    y:     -10 - Math.random() * H * 0.6,
+    w:     5 + Math.random() * 9,
+    h:     3 + Math.random() * 5,
+    color: colors[Math.floor(Math.random() * colors.length)],
+    rot:   Math.random() * Math.PI * 2,
+    vx:    (Math.random() - 0.5) * 4,
+    vy:    1.5 + Math.random() * 4,
+    vr:    (Math.random() - 0.5) * 0.12,
+    alpha: 1
+  }));
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    let alive = false;
+    pieces.forEach(p => {
+      p.x   += p.vx;
+      p.y   += p.vy;
+      p.rot += p.vr;
+      // fade dopiero gdy kawałek wychodzi poza dolną krawędź
+      if (p.y > H) p.alpha -= 0.04;
+      if (p.alpha <= 0) return;
+      alive = true;
+      ctx.save();
+      ctx.globalAlpha = p.alpha;
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot);
+      ctx.fillStyle = p.color;
+      ctx.shadowColor = p.color;
+      ctx.shadowBlur = 8;
+      ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+      ctx.restore();
+    });
+    if (alive) requestAnimationFrame(draw);
+    else canvas.remove();
+  }
+
+  draw();
+
+  // dźwięk confetti — szum + fanfara
+  try {
+    const ac = getAudioCtx();
+    if (ac) {
+      const now = ac.currentTime;
+
+      // szum burst (jak strzelenie z konfetti-pistoletu)
+      const bufSize = ac.sampleRate * 0.18;
+      const buf = ac.createBuffer(1, bufSize, ac.sampleRate);
+      const data = buf.getChannelData(0);
+      for (let i = 0; i < bufSize; i++) data[i] = (Math.random() * 2 - 1);
+      const noise = ac.createBufferSource();
+      noise.buffer = buf;
+      const noiseFilter = ac.createBiquadFilter();
+      noiseFilter.type = 'bandpass';
+      noiseFilter.frequency.value = 2200;
+      noiseFilter.Q.value = 0.8;
+      const noiseGain = ac.createGain();
+      noiseGain.gain.setValueAtTime(0.55, now);
+      noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+      noise.connect(noiseFilter);
+      noiseFilter.connect(noiseGain);
+      noiseGain.connect(ac.destination);
+      noise.start(now);
+
+      // fanfara — wesołe nuty w górę
+      const fanfare = [
+        { f: 523,  t: 0,    dur: 0.12 },
+        { f: 659,  t: 0.1,  dur: 0.12 },
+        { f: 784,  t: 0.2,  dur: 0.12 },
+        { f: 1047, t: 0.3,  dur: 0.22 },
+        { f: 1319, t: 0.42, dur: 0.35 },
+      ];
+      fanfare.forEach(({ f, t, dur }) => {
+        const o = ac.createOscillator();
+        const g = ac.createGain();
+        o.connect(g); g.connect(ac.destination);
+        o.type = 'triangle';
+        o.frequency.value = f;
+        const st = now + t;
+        g.gain.setValueAtTime(0, st);
+        g.gain.linearRampToValueAtTime(0.12, st + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.001, st + dur);
+        o.start(st); o.stop(st + dur);
+      });
+
+      // trzy "pop" jak korki od szampana
+      [0, 0.08, 0.16].forEach(delay => {
+        const popBuf = ac.createBuffer(1, ac.sampleRate * 0.06, ac.sampleRate);
+        const pd = popBuf.getChannelData(0);
+        for (let i = 0; i < pd.length; i++) pd[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ac.sampleRate * 0.015));
+        const pop = ac.createBufferSource();
+        pop.buffer = popBuf;
+        const pg = ac.createGain();
+        pg.gain.value = 0.7;
+        pop.connect(pg); pg.connect(ac.destination);
+        pop.start(now + delay);
+      });
+    }
+  } catch(e) {}
+}

@@ -1,103 +1,112 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Biotechnologia Molekularna | GMO</title>
-<!--
-  Projekt: Biotechnologia Molekularna — Korzyści, Zagrożenia i GMO
-  Autor:   ten_roger
-  © 2025 ten_roger. Wszelkie prawa zastrzeżone.
-  Kopiowanie lub rozpowszechnianie bez zgody autora jest zabronione.
--->
+<!-- Autor: ten_roger | (c) 2025 | nie kopiowac bez zgody -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<!-- ekran startowy ładowania -->
 <div id="loader">
-  <div class="loader-corners">
-    <span></span><span></span><span></span><span></span>
-  </div>
+  <div class="loader-corners"><span></span><span></span><span></span><span></span></div>
   <div class="loader-logo">BIOTECHNOLOGIA</div>
-  <div class="loader-sub">MOLEKULARNA // GMO // INŻYNIERIA GENETYCZNA</div>
+  <div class="loader-sub">MOLEKULARNA // GMO // INZYNIERIA GENETYCZNA</div>
   <div class="loader-pct" id="loaderPct">0%</div>
-  <div class="loader-bar-wrap">
-    <div class="loader-bar" id="loaderBar"></div>
-  </div>
+  <div class="loader-bar-wrap"><div class="loader-bar" id="loaderBar"></div></div>
   <div class="loader-status" id="loaderStatus">INICJALIZACJA SYSTEMU...</div>
 </div>
-
-<!-- tło cząsteczkowe i efekty wizualne -->
 <canvas id="bgCanvas"></canvas>
 <div class="scanline"></div>
 <div class="noise"></div>
-
-<!-- tło cząsteczkowe i efekty wizualne -->
-<canvas id="bgCanvas"></canvas>
-<div class="scanline"></div>
-<div class="noise"></div>
-
-<!-- nagłówek strony -->
 <header class="holo-header">
-  <div class="header-corner tl"></div>
-  <div class="header-corner tr"></div>
-  <div class="header-corner bl"></div>
-  <div class="header-corner br"></div>
+  <div class="header-corner tl"></div><div class="header-corner tr"></div>
+  <div class="header-corner bl"></div><div class="header-corner br"></div>
   <div class="header-inner">
-    <div class="dna-icon">🧬</div>
+    <div class="dna-icon">&#x1F9EC;</div>
     <h1 class="glitch" data-text="BIOTECHNOLOGIA MOLEKULARNA">BIOTECHNOLOGIA MOLEKULARNA</h1>
-    <p class="subtitle">KORZYŚCI I ZAGROŻENIA &nbsp;|&nbsp; GMO — WADY I ZALETY</p>
+    <p class="subtitle">KORZYSCI I ZAGROZENIA &nbsp;|&nbsp; GMO - WADY I ZALETY</p>
     <div class="header-stats">
-      <span class="stat-pill">⚗️ NAUKA</span>
-      <span class="stat-pill">🔬 BADANIA</span>
-      <span class="stat-pill">🌱 PRZYSZŁOŚĆ</span>
+      <span class="stat-pill">&#x2697;&#xFE0F; NAUKA</span>
+      <span class="stat-pill">&#x1F52C; BADANIA</span>
+      <span class="stat-pill">&#x1F331; PRZYSZLOSC</span>
     </div>
   </div>
 </header>
-
-<!-- nawigacja górna -->
 <nav class="holo-nav">
   <a href="#intro" class="nav-btn">WPROWADZENIE</a>
-  <a href="#korzysci" class="nav-btn">KORZYŚCI</a>
-  <a href="#zagrozenia" class="nav-btn">ZAGROŻENIA</a>
+  <a href="#dna" class="nav-btn">STRUKTURA DNA</a>
+  <a href="#techniki" class="nav-btn">TECHNIKI</a>
+  <a href="#korzysci" class="nav-btn">KORZYSCI</a>
+  <a href="#zagrozenia" class="nav-btn">ZAGROZENIA</a>
   <a href="#gmo" class="nav-btn">GMO</a>
   <a href="#soja" class="nav-btn">SOJA GMO</a>
   <a href="#wnioski" class="nav-btn">WNIOSKI</a>
   <a href="#gra" class="nav-btn">GRA</a>
-  <a href="#test" class="nav-btn">TEST WIEDZY</a>
+  <a href="#test" class="nav-btn">TEST</a>
 </nav>
-
-<!-- odtwarzacz muzyki w lewym dolnym rogu -->
 <div class="music-player" id="musicPlayer">
   <audio id="themeAudio" loop>
     <source src="Hans Zimmer  (Interstellar Main Theme) - Space 4k - no copyright Interstaller inspired Music.mp3" type="audio/mpeg">
   </audio>
-  <button class="music-toggle" id="musicToggle" title="Odtwórz muzykę">▶ THEME</button>
+  <button class="music-toggle" id="musicToggle">&#x25B6; THEME</button>
   <div class="music-vol-wrap">
-    <span class="vol-icon">🔊</span>
+    <span class="vol-icon">&#x1F50A;</span>
     <input type="range" id="volSlider" class="vol-slider" min="0" max="1" step="0.01" value="0.4">
   </div>
-  <span class="music-label" id="musicLabel">Hans Zimmer — Interstellar Theme</span>
+  <span class="music-label">Hans Zimmer - Interstellar Theme</span>
 </div>
 
-<!-- pasek przewijający się z hasłami -->
 <div class="ticker-wrap">
   <div class="ticker">
-    ⬡ BIOTECHNOLOGIA MOLEKULARNA &nbsp;&nbsp; ⬡ GMO — ORGANIZMY MODYFIKOWANE GENETYCZNIE &nbsp;&nbsp; ⬡ SOJA TRANSGENICZNA &nbsp;&nbsp; ⬡ INŻYNIERIA GENETYCZNA &nbsp;&nbsp; ⬡ CRISPR-CAS9 &nbsp;&nbsp; ⬡ REKOMBINACJA DNA &nbsp;&nbsp; ⬡ BIOETYKA &nbsp;&nbsp; ⬡ BEZPIECZEŃSTWO ŻYWNOŚCI &nbsp;&nbsp;
+    &#x2B21; BIOTECHNOLOGIA MOLEKULARNA &nbsp;&nbsp; &#x2B21; GMO - ORGANIZMY MODYFIKOWANE GENETYCZNIE &nbsp;&nbsp; &#x2B21; SOJA TRANSGENICZNA &nbsp;&nbsp; &#x2B21; INZYNIERIA GENETYCZNA &nbsp;&nbsp; &#x2B21; CRISPR-CAS9 &nbsp;&nbsp; &#x2B21; REKOMBINACJA DNA &nbsp;&nbsp; &#x2B21; BIOETYKA &nbsp;&nbsp; &#x2B21; BEZPIECZENSTWO ZYWNOSCI &nbsp;&nbsp; &#x2B21; TERAPIA GENOWA &nbsp;&nbsp; &#x2B21; SZCZEPIONKI mRNA &nbsp;&nbsp;
   </div>
 </div>
 
-<!-- sekcja wprowadzenia -->
 <section id="intro" class="holo-section">
-  <div class="section-label">// MODUŁ 01 — WPROWADZENIE</div>
+  <div class="section-label">// MODUL 01 - WPROWADZENIE</div>
   <div class="holo-card wide">
     <div class="card-glow"></div>
-    <div class="card-icon">🔬</div>
+    <div class="card-icon">&#x1F52C;</div>
     <h2>Czym jest Biotechnologia Molekularna?</h2>
-    <p>Biotechnologia molekularna to dziedzina nauki łącząca biologię, chemię i informatykę w celu manipulowania organizmami na poziomie molekularnym. Wykorzystuje techniki inżynierii genetycznej do modyfikowania DNA, RNA i białek organizmów żywych.</p>
-    <p>Jej zastosowania obejmują medycynę, rolnictwo, przemysł farmaceutyczny oraz ochronę środowiska. Dzięki niej możliwe jest tworzenie nowych leków, szczepionek, a także organizmów o pożądanych cechach.</p>
-    <div class="info-grid">
+    <p>Biotechnologia molekularna to dziedzina nauki &#322;&#261;cz&#261;ca biologi&#281;, chemi&#281; i informatyk&#281; w celu manipulowania organizmami na poziomie molekularnym. Wykorzystuje techniki in&#380;ynierii genetycznej do modyfikowania DNA, RNA i bia&#322;ek organizm&#243;w &#380;ywych.</p>
+    <p>Jej zastosowania obejmuj&#261; medycyn&#281;, rolnictwo, przemys&#322; farmaceutyczny oraz ochron&#281; &#347;rodowiska. Dzi&#281;ki niej mo&#380;liwe jest tworzenie nowych lek&#243;w, szczepionek, a tak&#380;e organizm&#243;w o po&#380;&#261;danych cechach.</p>
+    <h3 class="sub-heading">&#x1F4C5; O&#347; czasu - kluczowe odkrycia <small style="font-size:0.65rem;opacity:0.5;font-weight:400;letter-spacing:1px">(kliknij rok)</small></h3>
+    <div class="timeline">
+      <div class="tl-item" data-info="Watson i Crick opisali struktur&#281; podw&#243;jnej helisy DNA w 1953 roku. To odkrycie zrewolucjonizowa&#322;o biologi&#281; i otworzy&#322;o drog&#281; do in&#380;ynierii genetycznej. Helisa sk&#322;ada si&#281; z dw&#243;ch nici po&#322;&#261;czonych parami zasad: A-T i G-C.">
+        <div class="tl-dot"></div><div class="tl-year">1953</div>
+        <div class="tl-desc">Odkrycie struktury DNA - Watson i Crick</div>
+      </div>
+      <div class="tl-item" data-info="Cohen i Boyer przeprowadzili pierwsz&#261; udan&#261; rekombinacj&#281; DNA - wyci&#281;li fragment DNA z jednego organizmu i wstawili go do bakterii E. coli. To by&#322; pocz&#261;tek in&#380;ynierii genetycznej jako praktycznej nauki.">
+        <div class="tl-dot"></div><div class="tl-year">1973</div>
+        <div class="tl-desc">Pierwsza rekombinacja DNA - Cohen i Boyer</div>
+      </div>
+      <div class="tl-item" data-info="Kary Mullis wynalaz&#322; metod&#281; PCR (Polymerase Chain Reaction) - technik&#281; powielania fragment&#243;w DNA. PCR jest dzi&#347; podstaw&#261; diagnostyki medycznej, kryminalistyki i bada&#324; naukowych. Mullis otrzyma&#322; za to Nagrod&#281; Nobla w 1993 roku.">
+        <div class="tl-dot"></div><div class="tl-year">1983</div>
+        <div class="tl-desc">Wynalezienie metody PCR - Kary Mullis</div>
+      </div>
+      <div class="tl-item" data-info="Flavr Savr by&#322; pierwszym komercyjnym GMO dopuszczonym do sprzeda&#380;y w USA. Pomidor by&#322; zmodyfikowany tak, by wolniej dojrzewa&#322; i mia&#322; d&#322;u&#380;szy termin przydatno&#347;ci. Wycofano go z rynku w 1997 roku z powod&#243;w ekonomicznych, nie zdrowotnych.">
+        <div class="tl-dot"></div><div class="tl-year">1994</div>
+        <div class="tl-desc">Pierwsze GMO na rynku - pomidor Flavr Savr</div>
+      </div>
+      <div class="tl-item" data-info="Projekt Genomu Ludzkiego zako&#324;czy&#322; si&#281; odczytaniem pe&#322;nej sekwencji DNA cz&#322;owieka - ok. 3 miliard&#243;w par zasad i ~20 000 gen&#243;w. To otworzy&#322;o er&#281; medycyny spersonalizowanej i terapii genowej.">
+        <div class="tl-dot"></div><div class="tl-year">2003</div>
+        <div class="tl-desc">Uko&#324;czenie Projektu Genomu Ludzkiego</div>
+      </div>
+      <div class="tl-item" data-info="Jennifer Doudna i Emmanuelle Charpentier opisa&#322;y system CRISPR-Cas9 jako narz&#281;dzie do precyzyjnej edycji genomu. W 2020 roku otrzyma&#322;y za to Nagrod&#281; Nobla w dziedzinie chemii. CRISPR jest dzi&#347; najwa&#380;niejszym narz&#281;dziem biotechnologii.">
+        <div class="tl-dot"></div><div class="tl-year">2012</div>
+        <div class="tl-desc">Odkrycie CRISPR-Cas9 - Doudna i Charpentier</div>
+      </div>
+      <div class="tl-item" data-info="Szczepionki mRNA firm Pfizer/BioNTech i Moderna by&#322;y pierwszymi zatwierdzonymi szczepionkami mRNA w historii. Zamiast os&#322;abionego wirusa, dostarczaj&#261; instrukcj&#281; (mRNA) do produkcji bia&#322;ka kolca SARS-CoV-2, co pobudza uk&#322;ad odporno&#347;ciowy.">
+        <div class="tl-dot"></div><div class="tl-year">2020</div>
+        <div class="tl-desc">Pierwsza szczepionka mRNA - COVID-19</div>
+      </div>
+    </div>
+    <div id="tlPopup" class="tl-popup" style="display:none"></div>
+    <div class="info-grid" style="margin-top:28px">
       <div class="info-tile"><span class="tile-num">1953</span><span class="tile-label">Odkrycie struktury DNA</span></div>
       <div class="info-tile"><span class="tile-num">1973</span><span class="tile-label">Pierwsza rekombinacja DNA</span></div>
       <div class="info-tile"><span class="tile-num">1994</span><span class="tile-label">Pierwsze GMO na rynku</span></div>
@@ -106,345 +115,400 @@
   </div>
 </section>
 
-<!-- sekcja korzyści -->
+<section id="dna" class="holo-section">
+  <div class="section-label">// MODUL 02 - STRUKTURA DNA I GENY</div>
+  <h2 class="section-title cyan">BUDOWA DNA I GENY</h2>
+  <div class="cards-row">
+    <div class="holo-card">
+      <div class="card-glow cyan-glow"></div>
+      <div class="card-icon">&#x1F9EC;</div>
+      <h3>Budowa DNA</h3>
+      <p>DNA (kwas deoksyrybonukleinowy) to cz&#261;steczka przechowuj&#261;ca informacj&#281; genetyczn&#261;. Zbudowana jest z dw&#243;ch nici skr&#281;conych w podw&#243;jn&#261; helisy.</p>
+      <ul class="holo-list">
+        <li>Nukleotyd = cukier (deoksyryboza) + fosforan + zasada azotowa</li>
+        <li>Zasady purynowe: <strong>Adenina (A)</strong> i <strong>Guanina (G)</strong></li>
+        <li>Zasady pirymidynowe: <strong>Tymina (T)</strong> i <strong>Cytozyna (C)</strong></li>
+        <li>Regu&#322;a Chargaffa: A &#322;&#261;czy si&#281; z T, G &#322;&#261;czy si&#281; z C</li>
+        <li>Nici s&#261; anty r&#243;wnoleg&#322;e (5'&#8594;3' i 3'&#8594;5')</li>
+      </ul>
+    </div>
+    <div class="holo-card">
+      <div class="card-glow cyan-glow"></div>
+      <div class="card-icon">&#x1F511;</div>
+      <h3>Gen i Ekspresja Gen&#243;w</h3>
+      <p>Gen to odcinek DNA koduj&#261;cy bia&#322;ko lub RNA. Ekspresja genu przebiega w dw&#243;ch etapach:</p>
+      <ul class="holo-list">
+        <li><strong>Transkrypcja</strong> - przepisanie DNA na mRNA w j&#261;drze kom&#243;rkowym</li>
+        <li><strong>Translacja</strong> - odczytanie mRNA przez rybosom i synteza bia&#322;ka</li>
+        <li>Kodon = tr&#243;jka nukleotyd&#243;w koduj&#261;ca jeden aminokwas</li>
+        <li>Kod genetyczny jest zdegenerowany - jeden aminokwas mo&#380;e by&#263; kodowany przez kilka kodon&#243;w</li>
+        <li>Promotor - sekwencja DNA inicjuj&#261;ca transkrypcj&#281;</li>
+      </ul>
+    </div>
+    <div class="holo-card">
+      <div class="card-glow cyan-glow"></div>
+      <div class="card-icon">&#x1F4E6;</div>
+      <h3>Organizacja Genomu</h3>
+      <p>Genom cz&#322;owieka zawiera ok. 3 miliardy par zasad i ok. 20 000 gen&#243;w. Tylko ~2% DNA koduje bia&#322;ka.</p>
+      <ul class="holo-list">
+        <li>Chromosomy - DNA upakowane z bia&#322;kami histonowymi</li>
+        <li>Cz&#322;owiek ma 46 chromosom&#243;w (23 pary)</li>
+        <li>Ekson - koduj&#261;ca cz&#281;&#347;&#263; genu</li>
+        <li>Intron - niekoduj&#261;ca cz&#281;&#347;&#263; genu (wycinana podczas splicingu)</li>
+        <li>DNA mitochondrialne - dziedziczone wy&#322;&#261;cznie po matce</li>
+      </ul>
+    </div>
+  </div>
+  <div class="holo-card wide" style="margin-top:20px">
+    <div class="card-glow cyan-glow"></div>
+    <h3 class="sub-heading">&#x1F4D6; S&#322;ownik poj&#281;&#263; <small style="font-size:0.65rem;opacity:0.5;font-weight:400;letter-spacing:1px">(kliknij termin)</small></h3>
+    <div class="glossary-grid">
+      <div class="gloss-term" data-def="Replikacja to proces kopiowania DNA przed podzia&#322;em kom&#243;rki. Enzym helikaza rozplata helisy, a polimeraza DNA syntetyzuje nowe nici wed&#322;ug zasady komplementarno&#347;ci. Replikacja jest semikonserwatywna - ka&#380;da nowa cz&#261;steczka DNA zawiera jedn&#261; star&#261; i jedn&#261; now&#261; ni&#263;.">Replikacja DNA</div>
+      <div class="gloss-term" data-def="Mutacja to trwa&#322;a zmiana w sekwencji DNA. Mo&#380;e by&#263; punktowa (zmiana jednej zasady), insercja (wstawienie) lub delecja (usuni&#281;cie). Mutacje mog&#261; by&#263; spontaniczne lub wywo&#322;ane mutagenami (promieniowanie UV, substancje chemiczne). Nie wszystkie mutacje s&#261; szkodliwe.">Mutacja</div>
+      <div class="gloss-term" data-def="Allel to jedna z alternatywnych form genu. Ka&#380;dy cz&#322;owiek ma dwa allele ka&#380;dego genu (po jednym od ka&#380;dego rodzica). Allel dominuj&#261;cy maskuje allel recesywny. Homozygota ma dwa takie same allele, heterozygota - dwa r&#243;&#380;ne.">Allel</div>
+      <div class="gloss-term" data-def="Plazmid to ma&#322;e, koliste cz&#261;steczki DNA wyst&#281;puj&#261;ce w bakteriach, niezale&#380;ne od chromosomu. W in&#380;ynierii genetycznej plazmidy s&#322;u&#380;&#261; jako wektory - no&#347;niki obcego DNA wprowadzanego do kom&#243;rek. Bakterie mog&#261; wymienia&#263; plazmidy mi&#281;dzy sob&#261; (koniugacja).">Plazmid</div>
+      <div class="gloss-term" data-def="Enzym restrykcyjny to bia&#322;ko rozcinaj&#261;ce DNA w specyficznych miejscach. Jest podstawowym narz&#281;dziem in&#380;ynierii genetycznej - pozwala wycinaC i wklejaC fragmenty DNA jak no&#380;yczki i klej. Pochodzi z uk&#322;adu odporno&#347;ciowego bakterii.">Enzym restrykcyjny</div>
+      <div class="gloss-term" data-def="Ligaza DNA to enzym &#322;&#261;cz&#261;cy fragmenty DNA - skleja ko&#324;ce nici DNA. W in&#380;ynierii genetycznej u&#380;ywana razem z enzymami restrykcyjnymi do tworzenia rekombinowanego DNA. Dzia&#322;a poprzez tworzenie wi&#261;za&#324; fosfodiestrowych mi&#281;dzy nukleotydami.">Ligaza DNA</div>
+      <div class="gloss-term" data-def="Promotor to sekwencja DNA przed genem, do kt&#243;rej przy&#322;&#261;cza si&#281; polimeraza RNA, inicjuj&#261;c transkrypcj&#281;. Silny promotor = gen jest cz&#281;sto przepisywany = du&#380;o bia&#322;ka. W in&#380;ynierii genetycznej dob&#243;r odpowiedniego promotora decyduje o poziomie ekspresji wprowadzonego genu.">Promotor</div>
+      <div class="gloss-term" data-def="Transformacja to wprowadzenie obcego DNA do kom&#243;rki. W bakteriach mo&#380;e zachodzi&#263; naturalnie lub by&#263; wymuszona (elektroporacja, szok termiczny). W ro&#347;linach GMO cz&#281;sto u&#380;ywa si&#281; bakterii Agrobacterium tumefaciens jako naturalnego wektora do transferu DNA.">Transformacja</div>
+    </div>
+    <div id="glossDef" class="gloss-def" style="display:none"></div>
+  </div>
+</section>
+
+<section id="techniki" class="holo-section">
+  <div class="section-label">// MODUL 03 - TECHNIKI BIOTECHNOLOGICZNE</div>
+  <h2 class="section-title cyan">KLUCZOWE TECHNIKI</h2>
+  <div class="accordion-list">
+    <div class="acc-item">
+      <div class="acc-header"><span class="acc-icon">&#x2702;&#xFE0F;</span><span class="acc-title">CRISPR-Cas9 - Edycja Genomu</span><span class="acc-arrow">&#x25B8;</span></div>
+      <div class="acc-body">
+        <p>CRISPR-Cas9 to system edycji genomu oparty na mechanizmie obronnym bakterii. Sk&#322;ada si&#281; z dw&#243;ch element&#243;w: <strong>przewodnikowego RNA (gRNA)</strong> - kt&#243;ry naprowadza system na w&#322;a&#347;ciwe miejsce w genomie, oraz <strong>bia&#322;ka Cas9</strong> - kt&#243;re dzia&#322;a jak molekularne no&#380;yczki i przecina obie nici DNA.</p>
+        <div class="acc-steps">
+          <div class="acc-step"><span class="step-n">1</span><span>Projektowanie gRNA komplementarnego do docelowej sekwencji DNA</span></div>
+          <div class="acc-step"><span class="step-n">2</span><span>Kompleks gRNA+Cas9 wyszukuje sekwencj&#281; PAM (NGG) w genomie</span></div>
+          <div class="acc-step"><span class="step-n">3</span><span>Cas9 przecina obie nici DNA w wybranym miejscu</span></div>
+          <div class="acc-step"><span class="step-n">4</span><span>Kom&#243;rka naprawia p&#281;kni&#281;cie - mo&#380;na wy&#322;&#261;czy&#263; gen (NHEJ) lub wstawi&#263; nowy (HDR)</span></div>
+        </div>
+        <p style="margin-top:12px;color:rgba(0,200,255,0.6);font-size:0.85rem;">Zastosowania: leczenie chor&#243;b genetycznych, hodowla ro&#347;lin odpornych, badania naukowe, terapia nowotwor&#243;w.</p>
+      </div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-header"><span class="acc-icon">&#x1F501;</span><span class="acc-title">PCR - Reakcja &#321;a&#324;cuchowa Polimerazy</span><span class="acc-arrow">&#x25B8;</span></div>
+      <div class="acc-body">
+        <p>PCR (Polymerase Chain Reaction) to metoda powielania wybranego fragmentu DNA in vitro. Pozwala uzyska&#263; miliony kopii z minimalnej ilo&#347;ci materia&#322;u genetycznego.</p>
+        <div class="acc-steps">
+          <div class="acc-step"><span class="step-n">1</span><span><strong>Denaturacja (94&#176;C)</strong> - rozplecenie podw&#243;jnej helisy DNA na dwie nici</span></div>
+          <div class="acc-step"><span class="step-n">2</span><span><strong>Przy&#322;&#261;czanie starter&#243;w (55&#176;C)</strong> - kr&#243;tkie sekwencje DNA (primery) przy&#322;&#261;czaj&#261; si&#281; do nici matrycowych</span></div>
+          <div class="acc-step"><span class="step-n">3</span><span><strong>Elongacja (72&#176;C)</strong> - polimeraza Taq syntetyzuje nowe nici DNA</span></div>
+          <div class="acc-step"><span class="step-n">4</span><span>Cykl powtarza si&#281; 25&#8211;40 razy - ilo&#347;&#263; DNA podwaja si&#281; w ka&#380;dym cyklu</span></div>
+        </div>
+        <p style="margin-top:12px;color:rgba(0,200,255,0.6);font-size:0.85rem;">Zastosowania: diagnostyka chor&#243;b, kryminalistyka, badania ewolucyjne, testy na COVID-19.</p>
+      </div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-header"><span class="acc-icon">&#x26A1;</span><span class="acc-title">Elektroforeza &#379;elowa</span><span class="acc-arrow">&#x25B8;</span></div>
+      <div class="acc-body">
+        <p>Elektroforeza &#380;elowa to technika rozdzielania fragment&#243;w DNA wed&#322;ug wielko&#347;ci. DNA jest na&#322;adowane ujemnie, wi&#281;c w&#281;druje w polu elektrycznym w kierunku elektrody dodatniej.</p>
+        <ul class="holo-list" style="margin-top:10px">
+          <li>&#379;el agarozowy dzia&#322;a jak sito molekularne - mniejsze fragmenty w&#281;druj&#261; szybciej</li>
+          <li>Barwnik (np. bromek etydyny) sprawia, &#380;e DNA &#347;wieci pod UV</li>
+          <li>Marker DNA (drabinka) pozwala okre&#347;li&#263; wielko&#347;&#263; fragment&#243;w</li>
+          <li>Wynik: wz&#243;r pr&#261;&#380;k&#243;w charakterystyczny dla danego DNA</li>
+        </ul>
+        <p style="margin-top:12px;color:rgba(0,200,255,0.6);font-size:0.85rem;">Zastosowania: analiza produkt&#243;w PCR, diagnostyka genetyczna, identyfikacja organizm&#243;w GMO.</p>
+      </div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-header"><span class="acc-icon">&#x1F9EB;</span><span class="acc-title">Klonowanie Molekularne</span><span class="acc-arrow">&#x25B8;</span></div>
+      <div class="acc-body">
+        <p>Klonowanie molekularne to wprowadzenie obcego genu do wektora (np. plazmidu) i namno&#380;enie go w kom&#243;rkach gospodarza (np. bakteriach E. coli).</p>
+        <div class="acc-steps">
+          <div class="acc-step"><span class="step-n">1</span><span>Wyci&#281;cie genu i plazmidu tym samym enzymem restrykcyjnym - powstaj&#261; komplementarne "lepkie ko&#324;ce"</span></div>
+          <div class="acc-step"><span class="step-n">2</span><span>Po&#322;&#261;czenie genu z plazmidem przez ligaz&#281; DNA - powstaje rekombinowany plazmid</span></div>
+          <div class="acc-step"><span class="step-n">3</span><span>Transformacja bakterii - wprowadzenie plazmidu do kom&#243;rek E. coli</span></div>
+          <div class="acc-step"><span class="step-n">4</span><span>Selekcja transformant&#243;w na po&#380;ywce z antybiotykiem - tylko bakterie z plazmidem prze&#380;ywaj&#261;</span></div>
+        </div>
+        <p style="margin-top:12px;color:rgba(0,200,255,0.6);font-size:0.85rem;">Zastosowania: produkcja insuliny, hormonu wzrostu, interferon&#243;w, szczepionek rekombinowanych.</p>
+      </div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-header"><span class="acc-icon">&#x1F331;</span><span class="acc-title">Transgeneza Ro&#347;lin - Agrobacterium</span><span class="acc-arrow">&#x25B8;</span></div>
+      <div class="acc-body">
+        <p>Agrobacterium tumefaciens to bakteria glebowa, kt&#243;ra naturalnie wprowadza sw&#243;j DNA (plazmid Ti) do kom&#243;rek ro&#347;linnych. Naukowcy wykorzystuj&#261; ten mechanizm do tworzenia ro&#347;lin GMO.</p>
+        <ul class="holo-list" style="margin-top:10px">
+          <li>Plazmid Ti zawiera T-DNA - fragment wbudowuj&#261;cy si&#281; w chromosom ro&#347;liny</li>
+          <li>Do T-DNA wstawia si&#281; po&#380;&#261;dany gen (np. odporno&#347;ci na szkodniki)</li>
+          <li>Zmodyfikowane kom&#243;rki ro&#347;linne hoduje si&#281; in vitro i regeneruje ca&#322;&#261; ro&#347;lin&#281;</li>
+          <li>Alternatywa: biolistyka - "strzelanie" z&#322;otymi kuleczkami pokrytymi DNA</li>
+        </ul>
+        <p style="margin-top:12px;color:rgba(0,200,255,0.6);font-size:0.85rem;">Tak powstaj&#261; m.in. soja Roundup Ready, kukurydza Bt, Golden Rice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="korzysci" class="holo-section">
-  <div class="section-label">// MODUŁ 02 — KORZYŚCI</div>
-  <h2 class="section-title green">KORZYŚCI BIOTECHNOLOGII</h2>
+  <div class="section-label">// MODUL 04 - KORZYSCI</div>
+  <h2 class="section-title green">KORZYSCI BIOTECHNOLOGII</h2>
   <div class="cards-row">
     <div class="holo-card">
       <div class="card-glow green-glow"></div>
-      <div class="card-icon">💊</div>
+      <div class="card-icon">&#x1F48A;</div>
       <h3>Medycyna</h3>
-      <ul class="holo-list">
-        <li>Produkcja insuliny metodami biotechnologicznymi</li>
-        <li>Terapia genowa chorób dziedzicznych</li>
-        <li>Szczepionki mRNA (COVID-19)</li>
-        <li>Leki biologiczne i przeciwciała monoklonalne</li>
-        <li>Diagnostyka molekularna PCR</li>
+      <ul class="holo-list exp-list">
+        <li data-exp="Bakterie E. coli zmodyfikowane genem insuliny ludzkiej produkuj&#261; insulin&#281; identyczn&#261; z ludzk&#261;. Przed 1982 rokiem insulin&#281; pozyskiwano z trzustek &#347;wi&#324; i kr&#243;w - by&#322;a dro&#380;sza i wywo&#322;ywa&#322;a reakcje alergiczne.">Produkcja insuliny metodami biotechnologicznymi</li>
+        <li data-exp="Terapia genowa polega na wprowadzeniu prawid&#322;owej kopii genu do kom&#243;rek pacjenta. Stosowana m.in. w leczeniu SMA (rdzeniowy zanik mi&#281;&#347;ni), hemofilii, niekt&#243;rych nowotwor&#243;w. Lek Zolgensma kosztuje ok. 2 mln dolar&#243;w - najdro&#380;szy lek &#347;wiata.">Terapia genowa chor&#243;b dziedzicznych</li>
+        <li data-exp="Szczepionki mRNA (Pfizer, Moderna) zawieraj&#261; instrukcj&#281; genetyczn&#261; do produkcji bia&#322;ka kolca SARS-CoV-2. Organizm sam produkuje antygen i wytwarza przeciwcia&#322;a. mRNA nie wbudowuje si&#281; w DNA - rozk&#322;ada si&#281; po kilku dniach.">Szczepionki mRNA (COVID-19)</li>
+        <li data-exp="Przeciwcia&#322;a monoklonalne to bia&#322;ka produkowane przez zmodyfikowane kom&#243;rki, kt&#243;re rozpoznaj&#261; konkretny antygen. Stosowane w leczeniu nowotwor&#243;w (np. Herceptin na raka piersi), chor&#243;b autoimmunologicznych, COVID-19.">Leki biologiczne i przeciwcia&#322;a monoklonalne</li>
+        <li data-exp="PCR (Polymerase Chain Reaction) pozwala wykry&#263; DNA patogenu nawet z minimalnej pr&#243;bki. Podstawa test&#243;w na COVID-19, HIV, gru&#378;lic&#281;, choroby genetyczne. Wynik w kilka godzin zamiast tygodni hodowli bakteryjnej.">Diagnostyka molekularna PCR</li>
+        <li data-exp="Hormon wzrostu (somatotropina) produkowany przez zmodyfikowane bakterie zast&#261;pi&#322; ekstrakcj&#281; z ludzkich przysadek m&#243;zgowych. Wcze&#347;niejsza metoda prowadzi&#322;a do przenoszenia choroby Creutzfeldta-Jakoba (prionowej).">Rekombinowany hormon wzrostu</li>
       </ul>
     </div>
     <div class="holo-card">
       <div class="card-glow green-glow"></div>
-      <div class="card-icon">🌾</div>
+      <div class="card-icon">&#x1F33E;</div>
       <h3>Rolnictwo</h3>
-      <ul class="holo-list">
-        <li>Rośliny odporne na szkodniki i choroby</li>
-        <li>Wyższe plony przy mniejszym zużyciu pestycydów</li>
-        <li>Odporność na suszę i mróz</li>
-        <li>Wzbogacenie wartości odżywczej (Golden Rice)</li>
-        <li>Redukcja strat po zbiorach</li>
+      <ul class="holo-list exp-list">
+        <li data-exp="Kukurydza Bt zawiera gen bakterii Bacillus thuringiensis produkuj&#261;cy bia&#322;ko Cry - toksyczne dla larw owad&#243;w szkodliwych (np. omacnicy prosowianki), ale bezpieczne dla ssak&#243;w. Zmniejsza straty plon&#243;w o 10-20% bez stosowania insektycyd&#243;w.">Ro&#347;liny odporne na szkodniki (kukurydza Bt)</li>
+        <li data-exp="Soja Roundup Ready zawiera gen bakteryjny nadaj&#261;cy odporno&#347;&#263; na herbicyd glifosat. Rolnik mo&#380;e opryskaC ca&#322;e pole glifosatem - chwasty gin&#261;, soja prze&#380;ywa. Kontrowersje: WHO klasyfikuje glifosat jako 'prawdopodobnie rakotwOrczy'.">Wy&#380;sze plony - soja Roundup Ready</li>
+        <li data-exp="Golden Rice zawiera geny z narcyza i bakterii, kt&#243;re umo&#380;liwiaj&#261; produkcj&#281; beta-karotenu (prowitaminy A) w ziarnie ry&#380;u. Ma pom&#243;c w walce z niedoborem witaminy A - problemem dotykaj&#261;cym 250 mln dzieci w Azji i Afryce, prowadz&#261;cym do &#347;lepoty.">Golden Rice - wzbogacenie warto&#347;ci od&#380;ywczej</li>
+        <li data-exp="Ro&#347;liny modyfikowane pod k&#261;tem odporno&#347;ci na susz&#281; zawieraj&#261; geny reguluj&#261;ce gospodark&#281; wodn&#261;. Np. gen DREB z Arabidopsis thaliana aktywuje si&#281; w warunkach stresu wodnego i uruchamia mechanizmy ochronne. Kluczowe w obliczu zmian klimatycznych.">Odporno&#347;&#263; na susz&#281; i zmiany klimatu</li>
+        <li data-exp="Pomidory GMO z wyciszonym genem poligalakturonazy dojrzewaj&#261; wolniej i maj&#261; twardsz&#261; sk&#243;rk&#281;. Zmniejsza to straty podczas transportu i przechowywania - szacowane na 30-40% zbior&#243;w w krajach rozwijaj&#261;cych si&#281;.">Redukcja strat po zbiorach</li>
       </ul>
     </div>
     <div class="holo-card">
       <div class="card-glow green-glow"></div>
-      <div class="card-icon">🌍</div>
-      <h3>Środowisko</h3>
-      <ul class="holo-list">
-        <li>Bioremedacja — oczyszczanie gleby i wody</li>
-        <li>Biopaliwa z organizmów modyfikowanych</li>
-        <li>Redukcja emisji CO₂ w rolnictwie</li>
-        <li>Ochrona zagrożonych gatunków</li>
-        <li>Biodegradowalne bioplastiki</li>
+      <div class="card-icon">&#x1F30D;</div>
+      <h3>&#346;rodowisko i Przemys&#322;</h3>
+      <ul class="holo-list exp-list">
+        <li data-exp="Bioremedacja wykorzystuje mikroorganizmy (bakterie, grzyby) do rozk&#322;adu zanieczyszcze&#324;. Bakterie Pseudomonas putida rozk&#322;adaj&#261; w&#281;glowodory ropy naftowej. Po katastrofie Exxon Valdez u&#380;yto bioremedacji do oczyszczenia pla&#380; Alaski.">Bioremedacja - oczyszczanie &#347;rodowiska</li>
+        <li data-exp="Dro&#380;d&#380;e i bakterie zmodyfikowane genetycznie mog&#261; produkowa&#263; etanol, butanol i inne biopaliwa z biomasy (s&#322;omy, odpad&#243;w rolniczych). S&#261; bardziej wydajne ni&#380; naturalne mikroorganizmy i mog&#261; przetwarza&#263; celuloz&#281; - najtanszy surowiec.">Biopaliwa drugiej generacji</li>
+        <li data-exp="Bakterie produkuj&#261;ce PHA (polihydroksyalkaniany) - biodegradowalne plastiki - mog&#261; zast&#261;pi&#263; tradycyjne tworzywa sztuczne. PHA rozk&#322;ada si&#281; w glebie w ci&#261;gu kilku miesi&#281;cy, podczas gdy PET trwa setki lat.">Biodegradowalne bioplastiki (PHA)</li>
+        <li data-exp="Biotechnologia umo&#380;liwia tworzenie bank&#243;w gen&#243;w zagro&#380;onych gatunk&#243;w i ich rozmna&#380;anie in vitro. Klonowanie mo&#380;e przywr&#243;ci&#263; wymar&#322;e gatunki - trwaj&#261; prace nad przywr&#243;ceniem mamuta w&#322;ochatego (projekt Colossal Biosciences).">Ochrona bior&#243;&#380;norodno&#347;ci</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- sekcja zagrożeń -->
 <section id="zagrozenia" class="holo-section">
-  <div class="section-label">// MODUŁ 03 — ZAGROŻENIA</div>
-  <h2 class="section-title red">ZAGROŻENIA I RYZYKA</h2>
+  <div class="section-label">// MODUL 05 - ZAGROZENIA</div>
+  <h2 class="section-title red">ZAGROZENIA I RYZYKA</h2>
   <div class="cards-row">
     <div class="holo-card danger">
       <div class="card-glow red-glow"></div>
-      <div class="card-icon">⚠️</div>
-      <h3>Zagrożenia Zdrowotne</h3>
-      <ul class="holo-list red-list">
-        <li>Potencjalne reakcje alergiczne na nowe białka</li>
-        <li>Nieprzewidywalne efekty długoterminowe</li>
-        <li>Oporność na antybiotyki (markery selekcyjne)</li>
-        <li>Toksyczność nowych metabolitów</li>
-        <li>Brak pełnych badań długoterminowych</li>
+      <div class="card-icon">&#x26A0;&#xFE0F;</div>
+      <h3>Zagro&#380;enia Zdrowotne</h3>
+      <ul class="holo-list red-list exp-list">
+        <li data-exp="Nowe bia&#322;ka wprowadzone do &#380;ywno&#347;ci GMO mog&#261; by&#263; alergenami. Przyk&#322;ad: pr&#243;ba wprowadzenia genu orzecha brazylijskiego do soi - bia&#322;ko okaza&#322;o si&#281; alergenem i projekt porzucono. Wymagane s&#261; testy alergologiczne przed dopuszczeniem GMO do obrotu.">Potencjalne reakcje alergiczne na nowe bia&#322;ka</li>
+        <li data-exp="Wi&#281;kszo&#347;&#263; bada&#324; nad GMO trwa 90 dni (wymagane przez UE). Krytycy wskazuj&#261;, &#380;e to za kr&#243;tko by wykry&#263; efekty d&#322;ugoterminowe. Badanie S&#233;raliniego (2012) sugerowa&#322;o nowotwory u szczur&#243;w karmionych kukurydz&#261; GMO - zosta&#322;o jednak wycofane z powodu b&#322;&#281;d&#243;w metodologicznych.">Nieprzewidywalne efekty d&#322;ugoterminowe</li>
+        <li data-exp="Wiele ro&#347;lin GMO zawiera geny odporno&#347;ci na antybiotyki jako markery selekcyjne - pozwalaj&#261; odr&#243;&#380;ni&#263; zmodyfikowane kom&#243;rki od niezmodyfikowanych. Istnieje teoretyczne ryzyko przeniesienia tych gen&#243;w na bakterie jelitowe, cho&#263; nie udowodniono tego u ludzi.">Odporno&#347;&#263; na antybiotyki (markery selekcyjne)</li>
+        <li data-exp="Modyfikacje genetyczne mog&#261; prowadzi&#263; do produkcji nowych metabolit&#243;w lub zmiany poziomu istniej&#261;cych. Np. zwi&#281;kszona produkcja naturalnych toksyn ro&#347;linnych. Ka&#380;de GMO musi przej&#347;&#263; szczeg&#243;&#322;ow&#261; analiz&#281; sk&#322;adu chemicznego.">Toksyczno&#347;&#263; nowych metabolit&#243;w</li>
       </ul>
     </div>
     <div class="holo-card danger">
       <div class="card-glow red-glow"></div>
-      <div class="card-icon">🧪</div>
-      <h3>Zagrożenia Ekologiczne</h3>
-      <ul class="holo-list red-list">
-        <li>Przepływ genów do dzikich populacji</li>
-        <li>Zagrożenie dla bioróżnorodności</li>
-        <li>Powstawanie "superchwastów" odpornych na herbicydy</li>
-        <li>Wpływ na owady zapylające (pszczoły)</li>
-        <li>Monopolizacja nasion przez korporacje</li>
+      <div class="card-icon">&#x1F9EA;</div>
+      <h3>Zagro&#380;enia Ekologiczne</h3>
+      <ul class="holo-list red-list exp-list">
+        <li data-exp="Py&#322;ek ro&#347;lin GMO mo&#380;e zapyla&#263; dzikie krewniaki, przenosz&#261;c na nie zmodyfikowane geny. Np. gen odporno&#347;ci na herbicyd mo&#380;e trafi&#263; do chwast&#243;w, tworz&#261;c 'superchwasty'. Odnotowano przypadki w Kanadzie - rzepak GMO skrzy&#380;owa&#322; si&#281; z dzikim rzepem.">Przep&#322;yw gen&#243;w do dzikich populacji</li>
+        <li data-exp="Monokultury ro&#347;lin GMO (np. soja na 50 mln ha w Brazylii) zast&#281;puj&#261; naturalne ekosystemy. Zmniejsza si&#281; r&#243;&#380;norodno&#347;&#263; gatunkowa ro&#347;lin uprawnych - uzale&#380;nienie od kilku odmian zwi&#281;ksza ryzyko katastrofy przy nowej chorobie.">Zagro&#380;enie dla bior&#243;&#380;norodno&#347;ci</li>
+        <li data-exp="Intensywne stosowanie herbicyd&#243;w (glifosat) na polach z ro&#347;linami Roundup Ready doprowadzi&#322;o do selekcji chwast&#243;w odpornych na glifosat. W USA zidentyfikowano ponad 40 gatunk&#243;w 'superchwast&#243;w'. Rolnicy musz&#261; stosowa&#263; coraz wi&#281;cej herbicyd&#243;w lub ich mieszanki.">Powstawanie 'superchwast&#243;w'</li>
+        <li data-exp="Bia&#322;ko Bt z kukurydzy GMO mo&#380;e by&#263; toksyczne dla larw motyli (np. monarcha) &#380;ywi&#261;cych si&#281; py&#322;kiem. Badania s&#261; sprzeczne - jedne wskazuj&#261; na zagro&#380;enie, inne nie. Pewne jest, &#380;e masowe stosowanie insektycyd&#243;w (alternatywa dla Bt) jest bardziej szkodliwe dla owad&#243;w.">Wp&#322;yw na owady zapylaj&#261;ce i motyle</li>
       </ul>
     </div>
     <div class="holo-card danger">
       <div class="card-glow red-glow"></div>
-      <div class="card-icon">⚖️</div>
-      <h3>Zagrożenia Etyczne</h3>
-      <ul class="holo-list red-list">
-        <li>Modyfikacja genomu człowieka (eugenika)</li>
-        <li>Patentowanie organizmów żywych</li>
-        <li>Nierówny dostęp do technologii</li>
-        <li>Brak transparentności w oznakowaniu</li>
-        <li>Bioterroryzm i broń biologiczna</li>
+      <div class="card-icon">&#x2696;&#xFE0F;</div>
+      <h3>Zagro&#380;enia Etyczne i Spo&#322;eczne</h3>
+      <ul class="holo-list red-list exp-list">
+        <li data-exp="W 2018 roku chi&#324;ski naukowiec He Jiankui og&#322;osi&#322; narodziny pierwszych dzieci z edytowanym genomem (CRISPR). Wywo&#322;a&#322;o to globalny skandal - edycja linii zarodkowej jest zakazana w wi&#281;kszo&#347;ci kraj&#243;w. Otwiera drog&#281; do 'projektowania dzieci' - wyboru cech genetycznych.">Modyfikacja genomu cz&#322;owieka (eugenika)</li>
+        <li data-exp="Firmy takie jak Monsanto (dzi&#347; Bayer) patentuj&#261; odmiany GMO i nasiona. Rolnicy musz&#261; kupowa&#263; nasiona co roku - nie mog&#261; zbiera&#263; w&#322;asnych. W Indiach doprowadzi&#322;o to do zad&#322;u&#380;enia i fali samob&#243;jstw w&#347;r&#243;d rolnik&#243;w uprawiaj&#261;cych bawe&#322;n&#281; Bt.">Patentowanie organizm&#243;w i monopol korporacji</li>
+        <li data-exp="Technologie GMO i CRISPR s&#261; dost&#281;pne g&#322;&#243;wnie dla bogatych kraj&#243;w i korporacji. Kraje rozwijaj&#261;ce si&#281;, kt&#243;re najbardziej potrzebuj&#261; odpornych odmian, cz&#281;sto nie maj&#261; dost&#281;pu do technologii lub s&#261; uzale&#380;nione od zagranicznych firm.">Nier&#243;wny dost&#281;p do technologii</li>
+        <li data-exp="Techniki in&#380;ynierii genetycznej mog&#261; by&#263; u&#380;yte do tworzenia patogen&#243;w o zwi&#281;kszonej zjadliwo&#347;ci lub odporno&#347;ci na leki. Projekt MKULTRA, w&#261;glik w listach (2001), pandemia COVID-19 - debata o mo&#380;liwym laboratoryjnym pochodzeniu wirus&#243;w.">Bioterroryzm i bro&#324; biologiczna</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- sekcja GMO -->
 <section id="gmo" class="holo-section">
-  <div class="section-label">// MODUŁ 04 — GMO</div>
+  <div class="section-label">// MODUL 06 - GMO</div>
   <h2 class="section-title cyan">ORGANIZMY MODYFIKOWANE GENETYCZNIE</h2>
   <div class="holo-card wide">
     <div class="card-glow cyan-glow"></div>
-    <p>GMO (Genetically Modified Organisms) to organizmy, których materiał genetyczny został zmieniony metodami inżynierii genetycznej w sposób niemożliwy do osiągnięcia w drodze naturalnego krzyżowania lub selekcji.</p>
-    <div class="two-col">
-      <div class="col-block green-block">
-        <h3>✅ ZALETY GMO</h3>
-        <ul class="holo-list">
-          <li>Zwiększona odporność na choroby i szkodniki</li>
-          <li>Wyższe plony — walka z głodem na świecie</li>
-          <li>Dłuższy termin przydatności do spożycia</li>
-          <li>Lepsza wartość odżywcza produktów</li>
-          <li>Mniejsze zużycie pestycydów i herbicydów</li>
-          <li>Odporność na niekorzystne warunki klimatyczne</li>
-          <li>Produkcja leków w roślinach (farmakologia)</li>
-        </ul>
-      </div>
-      <div class="col-block red-block">
-        <h3>❌ WADY GMO</h3>
-        <ul class="holo-list">
-          <li>Niepewność co do długoterminowego wpływu na zdrowie</li>
-          <li>Ryzyko zanieczyszczenia genetycznego ekosystemów</li>
-          <li>Uzależnienie rolników od korporacji nasiennych</li>
-          <li>Kontrowersje etyczne i społeczne</li>
-          <li>Brak pełnej akceptacji społecznej</li>
-          <li>Koszty badań i certyfikacji</li>
-          <li>Restrykcyjne regulacje prawne w UE</li>
-        </ul>
-      </div>
+    <p>GMO (Genetically Modified Organisms) to organizmy, kt&#243;rych materia&#322; genetyczny zosta&#322; zmieniony metodami in&#380;ynierii genetycznej w spos&#243;b niemo&#380;liwy do osi&#261;gni&#281;cia w drodze naturalnego krzy&#380;owania lub selekcji. Definicja prawna w UE (Dyrektywa 2001/18/WE) obejmuje tylko organizmy z wprowadzonym obcym DNA.</p>
+    <div class="compare-table-wrap">
+      <h3 class="sub-heading">&#x2696;&#xFE0F; Por&#243;wnanie - kliknij wiersz by zobaczy&#263; szczeg&#243;&#322;y</h3>
+      <table class="compare-table">
+        <thead><tr><th>Aspekt</th><th class="green-col">&#x2705; ZALETA</th><th class="red-col">&#x274C; WADA</th></tr></thead>
+        <tbody>
+          <tr class="cmp-row" data-detail="Plony ro&#347;lin GMO s&#261; &#347;rednio o 22% wy&#380;sze ni&#380; konwencjonalnych (meta-analiza 147 bada&#324;, 2014). Jednak wzrost plon&#243;w zale&#380;y od regionu - w krajach rozwijaj&#261;cych si&#281; efekt jest wi&#281;kszy ni&#380; w krajach rozwini&#281;tych.">
+            <td>Plony</td><td class="green-col">+22% wy&#380;sze plony</td><td class="red-col">Zale&#380;ne od regionu i odmiany</td>
+          </tr>
+          <tr class="cmp-row" data-detail="Ro&#347;liny Bt zmniejszaj&#261; u&#380;ycie insektycyd&#243;w o 37%. Ro&#347;liny Roundup Ready pocz&#261;tkowo zmniejszaj&#261; u&#380;ycie herbicyd&#243;w, ale d&#322;ugoterminowo prowadz&#261; do wzrostu - przez superchwasty odporne na glifosat.">
+            <td>Pestycydy</td><td class="green-col">-37% insektycyd&#243;w (Bt)</td><td class="red-col">Wzrost herbicyd&#243;w d&#322;ugoterminowo</td>
+          </tr>
+          <tr class="cmp-row" data-detail="Ponad 280 organizacji naukowych (WHO, FAO, NAS) potwierdza bezpiecze&#324;stwo GMO dla zdrowia. Jednak badania d&#322;ugoterminowe (ponad 2 lata) s&#261; rzadkie. UE finansowa&#322;a 130 projekt&#243;w badawczych - &#380;aden nie wykaza&#322; specyficznych zagro&#380;e&#324; GMO.">
+            <td>Bezpiecze&#324;stwo zdrowotne</td><td class="green-col">Potwierdzone przez WHO, FAO</td><td class="red-col">Brak bada&#324; ponad 10 lat</td>
+          </tr>
+          <tr class="cmp-row" data-detail="Uprawa GMO zmniejsza emisj&#281; CO2 przez mniejsze u&#380;ycie maszyn rolniczych (mniej opryssk&#243;w). Szacuje si&#281;, &#380;e w 2018 roku uprawa GMO zmniejszy&#322;a emisj&#281; o 23 mln ton CO2. Jednak wylesianie pod uprawy soi GMO w Brazylii emituje ogromne ilo&#347;ci CO2.">
+            <td>&#346;rodowisko</td><td class="green-col">Mniej CO2 z rolnictwa</td><td class="red-col">Wylesianie pod monokultury</td>
+          </tr>
+          <tr class="cmp-row" data-detail="Cena nasion GMO jest wy&#380;sza ni&#380; konwencjonalnych, ale rolnicy oszcz&#281;dzaj&#261; na pestycydach. W krajach rozwijaj&#261;cych si&#281; (Indie, Chiny) dochody rolnik&#243;w wzros&#322;y &#347;rednio o 68% po przej&#347;ciu na bawe&#322;n&#281; Bt. W USA mar&#380;e s&#261; mniejsze przez wy&#380;sze ceny nasion.">
+            <td>Ekonomia rolnika</td><td class="green-col">+68% doch&#243;d (kraje rozwijaj&#261;ce si&#281;)</td><td class="red-col">Uzale&#380;nienie od korporacji nasiennych</td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="cmpDetail" class="cmp-detail" style="display:none"></div>
     </div>
   </div>
-
   <div class="holo-card wide">
     <div class="card-glow cyan-glow"></div>
-    <h3>🌐 Najpopularniejsze rośliny GMO na świecie</h3>
+    <h3>&#x1F310; Globalna produkcja GMO (2023)</h3>
     <div class="gmo-grid">
-      <div class="gmo-item"><span class="gmo-emoji">🌱</span><span>Soja</span><span class="gmo-pct">77%</span><div class="gmo-bar"><div class="gmo-fill" style="width:77%"></div></div></div>
-      <div class="gmo-item"><span class="gmo-emoji">🌽</span><span>Kukurydza</span><span class="gmo-pct">32%</span><div class="gmo-bar"><div class="gmo-fill" style="width:32%"></div></div></div>
-      <div class="gmo-item"><span class="gmo-emoji">🌿</span><span>Bawełna</span><span class="gmo-pct">80%</span><div class="gmo-bar"><div class="gmo-fill" style="width:80%"></div></div></div>
-      <div class="gmo-item"><span class="gmo-emoji">🫒</span><span>Rzepak</span><span class="gmo-pct">30%</span><div class="gmo-bar"><div class="gmo-fill" style="width:30%"></div></div></div>
-      <div class="gmo-item"><span class="gmo-emoji">🍅</span><span>Pomidor</span><span class="gmo-pct">15%</span><div class="gmo-bar"><div class="gmo-fill" style="width:15%"></div></div></div>
-      <div class="gmo-item"><span class="gmo-emoji">🍚</span><span>Ryż (Golden)</span><span class="gmo-pct">5%</span><div class="gmo-bar"><div class="gmo-fill" style="width:5%"></div></div></div>
+      <div class="gmo-item"><span class="gmo-emoji">&#x1F331;</span><span>Soja</span><span class="gmo-pct">77%</span><div class="gmo-bar"><div class="gmo-fill" style="width:77%"></div></div></div>
+      <div class="gmo-item"><span class="gmo-emoji">&#x1F33D;</span><span>Kukurydza</span><span class="gmo-pct">32%</span><div class="gmo-bar"><div class="gmo-fill" style="width:32%"></div></div></div>
+      <div class="gmo-item"><span class="gmo-emoji">&#x1F33F;</span><span>Bawe&#322;na</span><span class="gmo-pct">80%</span><div class="gmo-bar"><div class="gmo-fill" style="width:80%"></div></div></div>
+      <div class="gmo-item"><span class="gmo-emoji">&#x1FAD2;</span><span>Rzepak</span><span class="gmo-pct">30%</span><div class="gmo-bar"><div class="gmo-fill" style="width:30%"></div></div></div>
+      <div class="gmo-item"><span class="gmo-emoji">&#x1F345;</span><span>Pomidor</span><span class="gmo-pct">15%</span><div class="gmo-bar"><div class="gmo-fill" style="width:15%"></div></div></div>
+      <div class="gmo-item"><span class="gmo-emoji">&#x1F35A;</span><span>Ry&#380; (Golden)</span><span class="gmo-pct">5%</span><div class="gmo-bar"><div class="gmo-fill" style="width:5%"></div></div></div>
     </div>
+    <p style="margin-top:16px;color:rgba(0,200,255,0.5);font-size:0.8rem;">&#321;&#261;czna powierzchnia upraw GMO na &#347;wiecie: <strong style="color:var(--cyan)">202 mln hektar&#243;w</strong> w 29 krajach (2023). Liderzy: USA (75 mln ha), Brazylia (61 mln ha), Argentyna (24 mln ha).</p>
   </div>
 </section>
 
-<!-- sekcja soja GMO -->
 <section id="soja" class="holo-section">
-  <div class="section-label">// MODUŁ 05 — SOJA GMO</div>
-  <h2 class="section-title yellow">SOJA TRANSGENICZNA — GDZIE JEST DODAWANA?</h2>
+  <div class="section-label">// MODUL 07 - SOJA GMO</div>
+  <h2 class="section-title yellow">SOJA TRANSGENICZNA</h2>
   <div class="holo-card wide">
     <div class="card-glow yellow-glow"></div>
     <div class="soja-intro">
-      <div class="soja-icon">🌱</div>
+      <div class="soja-icon">&#x1F331;</div>
       <div>
-        <p>Soja GMO (głównie odmiana Roundup Ready firmy Monsanto) jest odporna na herbicyd glifosat. Stanowi ponad <strong>77% światowej produkcji soi</strong>. Polska i UE importują ogromne ilości soi GMO jako paszę dla zwierząt hodowlanych.</p>
+        <p>Soja GMO (g&#322;&#243;wnie odmiana <strong>Roundup Ready</strong> firmy Monsanto/Bayer) jest odporna na herbicyd glifosat dzi&#281;ki genowi bakterii Agrobacterium sp. szczep CP4. Stanowi ponad <strong>77% &#347;wiatowej produkcji soi</strong>. Polska i UE importuj&#261; rocznie ok. <strong>35 mln ton</strong> soi GMO jako pasz&#281; dla zwierz&#261;t hodowlanych.</p>
+        <p style="margin-top:8px;color:rgba(200,200,100,0.7);font-size:0.9rem;">Ciekawostka: Polska jest jednym z najwi&#281;kszych importer&#243;w soi GMO w UE, mimo &#380;e uprawa GMO jest u nas zakazana.</p>
       </div>
     </div>
   </div>
-
   <div class="cards-row">
     <div class="holo-card">
       <div class="card-glow yellow-glow"></div>
-      <div class="card-icon">🍔</div>
-      <h3>Żywność Przetworzona</h3>
-      <ul class="holo-list yellow-list">
-        <li>Olej sojowy (margaryny, majonezy)</li>
-        <li>Lecytyna sojowa (E322) — czekolady, ciastka</li>
-        <li>Mąka sojowa — pieczywo, makarony</li>
-        <li>Tofu i produkty wegańskie</li>
-        <li>Sosy sojowe i teriyaki</li>
-        <li>Napoje roślinne (mleko sojowe)</li>
-        <li>Białko sojowe — wędliny, parówki</li>
+      <div class="card-icon">&#x1F354;</div>
+      <h3>&#379;ywno&#347;&#263; Przetworzona</h3>
+      <ul class="holo-list yellow-list exp-list">
+        <li data-exp="Olej sojowy jest rafinowany - bia&#322;ka (potencjalne alergeny) s&#261; usuwane. W UE olej z soi GMO nie musi by&#263; znakowany jako GMO, je&#347;li zawarto&#347;&#263; GMO jest poni&#380;ej 0,9%. Lecytyna sojowa E322 jest emulgatorem - &#322;&#261;czy t&#322;uszcze z wod&#261; w czekoladzie i ciastkach.">Olej sojowy, lecytyna E322 - czekolady, ciastka</li>
+        <li data-exp="M&#261;ka sojowa zawiera bia&#322;ko sojowe i jest u&#380;ywana jako wype&#322;niacz w pieczywie i makaronach. Zwi&#281;ksza zawarto&#347;&#263; bia&#322;ka i obni&#380;a koszty produkcji. W UE musi by&#263; znakowana jako 'zawiera soj&#281;' ze wzgl&#281;du na alergeny.">M&#261;ka sojowa - pieczywo, makarony</li>
+        <li data-exp="Tofu, tempeh, edamame - produkty z ca&#322;ych ziaren soi musz&#261; by&#263; znakowane jako GMO w UE, je&#347;li zawieraj&#261; ponad 0,9% GMO. Wi&#281;kszo&#347;&#263; tofu w Polsce pochodzi z soi non-GMO (europejskiej lub certyfikowanej).">Tofu i produkty wega&#324;skie</li>
+        <li data-exp="Bia&#322;ko sojowe (izolat, koncentrat) jest dodawane do w&#281;dlin, par&#243;wek, hamburger&#243;w jako tani wype&#322;niacz bia&#322;kowy. Mo&#380;e stanowi&#263; 20-30% sk&#322;adu tanich w&#281;dlin. Musi by&#263; deklarowane na etykiecie.">Bia&#322;ko sojowe - w&#281;dliny, par&#243;wki</li>
       </ul>
     </div>
     <div class="holo-card">
       <div class="card-glow yellow-glow"></div>
-      <div class="card-icon">🐄</div>
-      <h3>Pasza dla Zwierząt</h3>
-      <ul class="holo-list yellow-list">
-        <li>Śruta sojowa — główna pasza dla drobiu</li>
-        <li>Karma dla trzody chlewnej</li>
-        <li>Pasza dla bydła mlecznego i mięsnego</li>
-        <li>Karma dla ryb hodowlanych (akwakultura)</li>
-        <li>Pasza dla zwierząt domowych</li>
+      <div class="card-icon">&#x1F404;</div>
+      <h3>Pasza dla Zwierz&#261;t</h3>
+      <ul class="holo-list yellow-list exp-list">
+        <li data-exp="&#346;ruta sojowa (pozosta&#322;o&#347;&#263; po t&#322;oczeniu oleju) jest g&#322;&#243;wnym &#378;r&#243;d&#322;em bia&#322;ka w paszach dla drobiu. Kurczak broj ler zjada ok. 2 kg &#347;ruty sojowej w ci&#261;gu &#380;ycia. Polska importuje ok. 2 mln ton &#347;ruty sojowej rocznie - g&#322;&#243;wnie z Brazylii i Argentyny.">&#346;ruta sojowa - g&#322;&#243;wna pasza dla drobiu</li>
+        <li data-exp="&#346;winie i byd&#322;o mleczne otrzymuj&#261; pasze z du&#380;ym udzia&#322;em soi GMO. Mleko i mi&#281;so od zwierz&#261;t karmionych pasz&#261; GMO nie musi by&#263; znakowane jako GMO w UE - DNA i bia&#322;ka GMO nie przechodz&#261; do produkt&#243;w zwierz&#281;cych w wykrywalnych ilo&#347;ciach.">Pasza dla trzody chlewnej i byd&#322;a</li>
+        <li data-exp="Ryby hodowlane (&#322;oso&#347;, pstr&#261;g, tilapia) s&#261; karmione paszami zawieraj&#261;cymi soj&#281; GMO jako zamiennik m&#261;czki rybnej. Zmniejsza to presj&#281; na dzikie zasoby ryb, ale zmienia profil kwas&#243;w t&#322;uszczowych w mi&#281;sie ryb hodowlanych.">Karma dla ryb hodowlanych</li>
       </ul>
     </div>
     <div class="holo-card">
       <div class="card-glow yellow-glow"></div>
-      <div class="card-icon">🏭</div>
-      <h3>Przemysł i Inne</h3>
-      <ul class="holo-list yellow-list">
-        <li>Biopaliwa (biodiesel z oleju sojowego)</li>
-        <li>Farby i lakiery na bazie soi</li>
-        <li>Kosmetyki i kremy nawilżające</li>
-        <li>Kleje i uszczelniacze przemysłowe</li>
-        <li>Suplementy diety (izoflawony)</li>
+      <div class="card-icon">&#x1F3ED;</div>
+      <h3>Przemys&#322;</h3>
+      <ul class="holo-list yellow-list exp-list">
+        <li data-exp="Biodiesel z oleju sojowego (FAME - fatty acid methyl esters) jest mieszany z olejem nap&#281;dowym. W USA soja jest g&#322;&#243;wnym surowcem do produkcji biodiesla. Kontrowersje: uprawa soi pod biopaliwa konkuruje z produkcj&#261; &#380;ywno&#347;ci i prowadzi do wylesiania.">Biodiesel z oleju sojowego</li>
+        <li data-exp="Izoflawony sojowe (genisteina, daidzeina) to fitoestrogeny - zwi&#261;zki podobne do estrogen&#243;w. Stosowane w suplementach dla kobiet w menopauzie. Kontrowersje: mog&#261; zaburza&#263; gospodark&#281; hormonaln&#261; przy nadmiernym spo&#380;yciu.">Suplementy diety - izoflawony</li>
+        <li data-exp="Farby na bazie oleju sojowego s&#261; biodegradowalne i mniej toksyczne ni&#380; tradycyjne farby olejne. Stosowane w druku gazetowym (farby sojowe) i jako ekologiczne pow&#322;oki ochronne.">Farby i lakiery na bazie soi</li>
       </ul>
     </div>
   </div>
-
   <div class="holo-card wide warning-card">
     <div class="card-glow yellow-glow"></div>
-    <h3>⚠️ Jak rozpoznać soję GMO na etykiecie?</h3>
+    <h3>&#x26A0;&#xFE0F; Jak rozpozna&#263; soj&#281; GMO na etykiecie?</h3>
     <div class="label-tips">
-      <div class="label-tip">🔍 Szukaj oznaczenia <span class="highlight">„genetycznie zmodyfikowana"</span> lub <span class="highlight">„zawiera GMO"</span></div>
-      <div class="label-tip">📋 Lecytyna sojowa <span class="highlight">E322</span> — często pochodzi z soi GMO</div>
-      <div class="label-tip">✅ Produkty <span class="highlight">„non-GMO"</span> lub <span class="highlight">„bez GMO"</span> są certyfikowane</div>
-      <div class="label-tip">🌿 W UE obowiązek znakowania powyżej <span class="highlight">0,9%</span> zawartości GMO</div>
+      <div class="label-tip">&#x1F50D; Szukaj oznaczenia <span class="highlight">&#8222;genetycznie zmodyfikowana&#8221;</span> lub <span class="highlight">&#8222;zawiera GMO&#8221;</span></div>
+      <div class="label-tip">&#x1F4CB; Lecytyna sojowa <span class="highlight">E322</span> - cz&#281;sto pochodzi z soi GMO, ale po rafinacji nie zawiera DNA</div>
+      <div class="label-tip">&#x2705; Produkty <span class="highlight">&#8222;non-GMO&#8221;</span> lub <span class="highlight">&#8222;bez GMO&#8221;</span> s&#261; certyfikowane przez niezale&#380;ne organizacje</div>
+      <div class="label-tip">&#x1F33F; W UE obowi&#261;zek znakowania powy&#380;ej <span class="highlight">0,9%</span> zawarto&#347;ci GMO - poni&#380;ej tego progu nie ma obowi&#261;zku</div>
+      <div class="label-tip">&#x1F404; Produkty zwierz&#281;ce (mleko, mi&#281;so, jaja) od zwierz&#261;t karmionych pasz&#261; GMO <span class="highlight">nie musz&#261; by&#263; znakowane</span> jako GMO</div>
     </div>
   </div>
 </section>
 
-<!-- VIDEOS SECTION -->
+
+
 <section id="videos" class="holo-section">
-  <div class="section-label">// MODUŁ 06 — MATERIAŁY WIDEO</div>
+  <div class="section-label">// MODUL 09 - MATERIALY WIDEO</div>
   <h2 class="section-title cyan">FILMY EDUKACYJNE</h2>
-  <p style="color:rgba(0,200,255,0.55);font-size:0.85rem;margin-bottom:20px;font-family:'Orbitron',monospace;letter-spacing:1px;">▸ Kliknij kartę aby otworzyć film na YouTube</p>
+  <p style="color:rgba(0,200,255,0.55);font-size:0.85rem;margin-bottom:20px;font-family:'Orbitron',monospace;letter-spacing:1px;">&#x25B8; Kliknij kart&#281; aby otworzy&#263; film na YouTube</p>
   <div class="videos-grid">
-
     <div class="video-card" onclick="openVideo('Are GMOs Good or Bad Kurzgesagt')">
-      <div class="video-thumb">
-        <div class="video-thumb-placeholder" style="background:linear-gradient(135deg,#041428,#0a2a4a)">
-          <span class="thumb-icon">🧬</span>
-          <span class="thumb-label">GMO — Kurzgesagt</span>
-        </div>
-        <div class="play-overlay"><span class="play-btn-big">▶</span></div>
-      </div>
-      <div class="video-info">
-        <span class="video-tag">GMO</span>
-        <h4>GMO — Czy to naprawdę takie złe?</h4>
-        <p>Kurzgesagt wyjaśnia czym są GMO, jak działają i co mówi nauka na temat ich bezpieczeństwa.</p>
-      </div>
+      <div class="video-thumb"><div class="video-thumb-placeholder" style="background:linear-gradient(135deg,#041428,#0a2a4a)"><span class="thumb-icon">&#x1F9EC;</span><span class="thumb-label">GMO - Kurzgesagt</span></div><div class="play-overlay"><span class="play-btn-big">&#x25B6;</span></div></div>
+      <div class="video-info"><span class="video-tag">GMO</span><h4>GMO - Czy to naprawd&#281; takie z&#322;e?</h4><p>Kurzgesagt wyja&#347;nia czym s&#261; GMO i co m&#243;wi nauka o ich bezpiecze&#324;stwie.</p></div>
     </div>
-
     <div class="video-card" onclick="openVideo('Genetic Engineering Will Change Everything Forever CRISPR Kurzgesagt')">
-      <div class="video-thumb">
-        <div class="video-thumb-placeholder" style="background:linear-gradient(135deg,#041428,#1a0a2a)">
-          <span class="thumb-icon">✂️</span>
-          <span class="thumb-label">CRISPR — Kurzgesagt</span>
-        </div>
-        <div class="play-overlay"><span class="play-btn-big">▶</span></div>
-      </div>
-      <div class="video-info">
-        <span class="video-tag">CRISPR</span>
-        <h4>CRISPR — Inżynieria Genetyczna</h4>
-        <p>Jak CRISPR zmieni wszystko na zawsze — rewolucja w edycji genomu wyjaśniona przez Kurzgesagt.</p>
-      </div>
+      <div class="video-thumb"><div class="video-thumb-placeholder" style="background:linear-gradient(135deg,#041428,#1a0a2a)"><span class="thumb-icon">&#x2702;&#xFE0F;</span><span class="thumb-label">CRISPR - Kurzgesagt</span></div><div class="play-overlay"><span class="play-btn-big">&#x25B6;</span></div></div>
+      <div class="video-info"><span class="video-tag">CRISPR</span><h4>CRISPR - In&#380;ynieria Genetyczna</h4><p>Jak CRISPR zmieni wszystko na zawsze - rewolucja w edycji genomu.</p></div>
     </div>
-
     <div class="video-card" onclick="openVideo('What is biotechnology molecular biology explained')">
-      <div class="video-thumb">
-        <div class="video-thumb-placeholder" style="background:linear-gradient(135deg,#041428,#0a2a1a)">
-          <span class="thumb-icon">🌱</span>
-          <span class="thumb-label">Biotechnologia</span>
-        </div>
-        <div class="play-overlay"><span class="play-btn-big">▶</span></div>
-      </div>
-      <div class="video-info">
-        <span class="video-tag">BIOTECH</span>
-        <h4>Biotechnologia Molekularna</h4>
-        <p>Przegląd zastosowań biotechnologii molekularnej w przemyśle farmaceutycznym i rolnictwie.</p>
-      </div>
+      <div class="video-thumb"><div class="video-thumb-placeholder" style="background:linear-gradient(135deg,#041428,#0a2a1a)"><span class="thumb-icon">&#x1F331;</span><span class="thumb-label">Biotechnologia</span></div><div class="play-overlay"><span class="play-btn-big">&#x25B6;</span></div></div>
+      <div class="video-info"><span class="video-tag">BIOTECH</span><h4>Biotechnologia Molekularna</h4><p>Przegl&#261;d zastosowa&#324; biotechnologii w przemy&#347;le i medycynie.</p></div>
     </div>
-
     <div class="video-card" onclick="openVideo('GMO soy food documentary what you need to know')">
-      <div class="video-thumb">
-        <div class="video-thumb-placeholder" style="background:linear-gradient(135deg,#041428,#2a1a04)">
-          <span class="thumb-icon">🌾</span>
-          <span class="thumb-label">Soja GMO</span>
-        </div>
-        <div class="play-overlay"><span class="play-btn-big">▶</span></div>
-      </div>
-      <div class="video-info">
-        <span class="video-tag">SOJA</span>
-        <h4>Soja GMO — Prawda i Mity</h4>
-        <p>Gdzie trafia soja GMO, jak jest produkowana i co mówią badania naukowe o jej bezpieczeństwie.</p>
-      </div>
+      <div class="video-thumb"><div class="video-thumb-placeholder" style="background:linear-gradient(135deg,#041428,#2a1a04)"><span class="thumb-icon">&#x1F33E;</span><span class="thumb-label">Soja GMO</span></div><div class="play-overlay"><span class="play-btn-big">&#x25B6;</span></div></div>
+      <div class="video-info"><span class="video-tag">SOJA</span><h4>Soja GMO - Prawda i Mity</h4><p>Gdzie trafia soja GMO i co m&#243;wi&#261; badania naukowe.</p></div>
     </div>
-
   </div>
 </section>
 
-
-<!-- sekcja wnioski -->
 <section id="wnioski" class="holo-section">
-  <div class="section-label">// MODUŁ 06 — WNIOSKI</div>
+  <div class="section-label">// MODUL 10 - WNIOSKI</div>
   <h2 class="section-title cyan">PODSUMOWANIE I WNIOSKI</h2>
   <div class="holo-card wide">
     <div class="card-glow cyan-glow"></div>
-    <p>Biotechnologia molekularna i GMO to tematy budzące wiele kontrowersji. Z jednej strony oferują ogromne możliwości w walce z głodem, chorobami i zmianami klimatycznymi. Z drugiej — niosą ze sobą realne ryzyka ekologiczne, zdrowotne i etyczne.</p>
+    <p>Biotechnologia molekularna i GMO to tematy budz&#261;ce wiele kontrowersji. Z jednej strony oferuj&#261; ogromne mo&#380;liwo&#347;ci w walce z g&#322;odem, chorobami i zmianami klimatycznymi. Z drugiej - nios&#261; ze sob&#261; realne ryzyka ekologiczne, zdrowotne i etyczne, kt&#243;re wymagaj&#261; &#347;cis&#322;ego nadzoru i transparentno&#347;ci.</p>
+    <p style="margin-top:10px">Konsensus naukowy (WHO, FAO, NAS, EFSA) jest jasny: <strong>zatwierdzone GMO s&#261; bezpieczne dla zdrowia</strong>. Debata toczy si&#281; g&#322;&#243;wnie wok&#243;&#322; kwestii ekologicznych, ekonomicznych i etycznych.</p>
     <div class="verdict-grid">
-      <div class="verdict-card green-verdict">
-        <span class="verdict-icon">🟢</span>
-        <h4>Potencjał</h4>
-        <p>Biotechnologia może rozwiązać kluczowe problemy ludzkości — głód, choroby, zmiany klimatu.</p>
-      </div>
-      <div class="verdict-card yellow-verdict">
-        <span class="verdict-icon">🟡</span>
-        <h4>Ostrożność</h4>
-        <p>Konieczne są długoterminowe badania, transparentność i ścisłe regulacje prawne.</p>
-      </div>
-      <div class="verdict-card red-verdict">
-        <span class="verdict-icon">🔴</span>
-        <h4>Ryzyko</h4>
-        <p>Bez odpowiedniego nadzoru technologia może prowadzić do nieodwracalnych szkód.</p>
-      </div>
+      <div class="verdict-card green-verdict"><span class="verdict-icon">&#x1F7E2;</span><h4>Potencja&#322;</h4><p>Biotechnologia mo&#380;e rozwi&#261;za&#263; kluczowe problemy ludzko&#347;ci - g&#322;&#243;d, choroby, zmiany klimatu. CRISPR otwiera er&#281; precyzyjnej medycyny.</p></div>
+      <div class="verdict-card yellow-verdict"><span class="verdict-icon">&#x1F7E1;</span><h4>Ostro&#380;no&#347;&#263;</h4><p>Konieczne s&#261; d&#322;ugoterminowe badania, transparentno&#347;&#263; w oznakowaniu i &#347;cis&#322;e regulacje prawne. Zasada ostro&#380;no&#347;ci ma sens.</p></div>
+      <div class="verdict-card red-verdict"><span class="verdict-icon">&#x1F534;</span><h4>Ryzyko</h4><p>Bez odpowiedniego nadzoru technologia mo&#380;e prowadzi&#263; do nieodwracalnych szk&#243;d ekologicznych i spo&#322;ecznych. Monopol korporacji to realne zagro&#380;enie.</p></div>
     </div>
   </div>
 </section>
 
-<!-- mini gra -->
 <section id="gra" class="holo-section">
-  <div class="section-label">// MODUŁ 08 — MINI GRA</div>
-  <h2 class="section-title green">BIO-PAC-MAN</h2>
+  <div class="section-label">// MODUL 11 - MINI GRA</div>
+  <h2 class="section-title green">DNA-RUNNER</h2>
   <div class="holo-card wide game-card">
     <div class="card-glow green-glow"></div>
-    <p class="game-desc">Steruj komórką DNA i zbieraj nukleotydy! Unikaj wirusów GMO. Użyj strzałek lub WASD.</p>
+    <p class="game-desc">Steruj enzymem restrykcyjnym i zbieraj nukleotydy A, T, G, C! Unikaj wirus&#243;w GMO, bakterii i bakteriofag&#243;w. Zbierz CRISPR &#x2702; by zniszczy&#263; patogeny!</p>
     <div class="game-wrap">
       <div class="game-hud">
-        <span class="hud-item">🧬 WYNIK: <span id="gameScore">0</span></span>
-        <span class="hud-item">❤️ ŻYCIA: <span id="gameLives">3</span></span>
-        <span class="hud-item">⚗️ POZIOM: <span id="gameLevel">1</span></span>
+        <span class="hud-item">&#x1F9EC; WYNIK: <span id="gameScore">0</span></span>
+        <span class="hud-item">&#x2764;&#xFE0F; ZYCIA: <span id="gameLives">3</span></span>
+        <span class="hud-item">&#x2697;&#xFE0F; POZIOM: <span id="gameLevel">1</span></span>
       </div>
       <canvas id="gameCanvas" width="560" height="420"></canvas>
       <div class="game-controls">
-        <button class="action-btn" id="startGameBtn">▶ START GRY</button>
-        <button class="action-btn" id="resetGameBtn">↺ RESET</button>
+        <button class="action-btn" id="startGameBtn">&#x25B6; START GRY</button>
+        <button class="action-btn" id="resetGameBtn">&#x21BA; RESET</button>
       </div>
-      <div class="game-keys">
-        <span>⬆⬇⬅➡ lub WASD — ruch</span>
-      </div>
+      <div class="game-keys"><span>&#x2B06;&#x2B07;&#x2B05;&#x27A1; lub WASD - ruch &nbsp;|&nbsp; SPACJA - pauza</span></div>
     </div>
   </div>
 </section>
 
-<!-- quiz wiedzy -->
 <section id="test" class="holo-section">
-  <div class="section-label">// MODUŁ 09 — TEST WIEDZY</div>
+  <div class="section-label">// MODUL 12 - TEST WIEDZY</div>
   <div class="holo-card wide test-intro-card">
     <div class="card-glow cyan-glow"></div>
     <div class="test-intro-text">
-      <p class="test-congrats">Zapoznałeś się z wszystkim? To świetnie!</p>
-      <p>Przeszedłeś przez biotechnologię molekularną, poznałeś korzyści i zagrożenia GMO, dowiedziałeś się gdzie kryje się soja transgeniczna w codziennym życiu — i może nawet pokonałeś kilka wirusów w grze. Teraz możesz sprawdzić, ile z tego zostało w głowie. Przejdź do testu wiedzy z biotechnologii i GMO — 10 pytań, każde z czterema odpowiedziami. Powodzenia!</p>
+      <p class="test-congrats">Zapozna&#322;e&#347; si&#281; z wszystkim? To &#347;wietnie!</p>
+      <p>Przeszed&#322;e&#347; przez biotechnologi&#281; molekularn&#261;, pozna&#322;e&#347; techniki in&#380;ynierii genetycznej, korzy&#347;ci i zagro&#380;enia GMO, dowiedzia&#322;e&#347; si&#281; gdzie kryje si&#281; soja transgeniczna - i mo&#380;e nawet pokona&#322;e&#347; kilka wirus&#243;w w grze. Czas sprawdzi&#263; wiedz&#281;!</p>
     </div>
     <button class="action-btn start-test-btn" id="startTestBtn">ROZPOCZNIJ TEST</button>
   </div>
-
   <div id="quizContainer" class="quiz-container" style="display:none">
     <div class="quiz-progress-wrap">
       <div class="quiz-progress-bar"><div id="quizProgressFill" class="quiz-progress-fill"></div></div>
@@ -457,45 +521,43 @@
       <div id="quizFeedback" class="quiz-feedback"></div>
     </div>
   </div>
-
   <div id="quizResult" class="holo-card wide quiz-result-card" style="display:none">
     <div class="card-glow green-glow"></div>
     <div id="quizResultContent"></div>
-    <button class="action-btn" id="retryTestBtn">SPRÓBUJ PONOWNIE</button>
+    <button class="action-btn" id="retryTestBtn">SPR&#211;BUJ PONOWNIE</button>
   </div>
 </section>
 
-<!-- stopka -->
 <footer class="holo-footer">
-  <div class="footer-corner tl"></div>
-  <div class="footer-corner tr"></div>
+  <div class="footer-corner tl"></div><div class="footer-corner tr"></div>
   <div class="footer-grid">
     <div class="footer-col">
-      <div class="footer-logo">🧬 BIOTECH LAB</div>
-      <p class="footer-desc">Strona edukacyjna poświęcona biotechnologii molekularnej i organizmom modyfikowanym genetycznie.</p>
+      <div class="footer-logo">&#x1F9EC; BIOTECH LAB</div>
+      <p class="footer-desc">Strona edukacyjna po&#347;wi&#281;cona biotechnologii molekularnej i organizmom modyfikowanym genetycznie. Materia&#322; na poziomie liceum klasa 3. Zawiera r&#243;wnie&#380; dodatkow&#261; wiedz&#281; pozapodr&#281;cznikow&#261; dla szerszego pogl&#261;du na temat.</p>
       <div class="creator-badge">
-        <span class="creator-label">TWÓRCA</span>
+        <span class="creator-label">TW&#211;RCA</span>
         <span class="creator-name">Roger S.</span>
       </div>
     </div>
     <div class="footer-col">
-      <h4 class="footer-heading">📚 ŹRÓDŁA WIEDZY</h4>
+      <h4 class="footer-heading">&#x1F4DA; &#377;R&#211;D&#321;A</h4>
       <div class="footer-links">
-        <a href="https://www.who.int/news-room/questions-and-answers/item/food-genetically-modified" target="_blank" class="footer-link">WHO — GMO i bezpieczeństwo żywności</a>
-        <a href="https://www.efsa.europa.eu/en/topics/topic/gmo" target="_blank" class="footer-link">EFSA — Europejski Urząd ds. Bezpieczeństwa Żywności</a>
-        <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3791249/" target="_blank" class="footer-link">PubMed — Badania nad GMO (meta-analiza)</a>
-        <a href="https://www.isaaa.org/resources/publications/briefs/55/" target="_blank" class="footer-link">ISAAA — Globalne statystyki upraw GMO</a>
-        <a href="https://www.nature.com/subjects/gm-crops" target="_blank" class="footer-link">Nature — Artykuły naukowe o GMO</a>
-        <a href="https://ec.europa.eu/food/plant/gmo_en" target="_blank" class="footer-link">Komisja Europejska — Regulacje GMO w UE</a>
-        <a href="https://www.britannica.com/science/biotechnology" target="_blank" class="footer-link">Britannica — Biotechnologia</a>
+        <a href="https://www.who.int/news-room/questions-and-answers/item/food-genetically-modified" target="_blank" class="footer-link">WHO - GMO i bezpiecze&#324;stwo &#380;ywno&#347;ci</a>
+        <a href="https://www.efsa.europa.eu/en/topics/topic/gmo" target="_blank" class="footer-link">EFSA - Europejski Urz&#261;d ds. Bezpiecze&#324;stwa &#379;ywno&#347;ci</a>
+        <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3791249/" target="_blank" class="footer-link">PubMed - Badania nad GMO (meta-analiza)</a>
+        <a href="https://www.isaaa.org/resources/publications/briefs/55/" target="_blank" class="footer-link">ISAAA - Globalne statystyki upraw GMO</a>
+        <a href="https://www.nature.com/subjects/gm-crops" target="_blank" class="footer-link">Nature - Artyku&#322;y naukowe o GMO</a>
+        <a href="https://ec.europa.eu/food/plant/gmo_en" target="_blank" class="footer-link">Komisja Europejska - Regulacje GMO w UE</a>
       </div>
     </div>
     <div class="footer-col">
       <h4 class="footer-heading">NAWIGACJA</h4>
       <div class="footer-links">
         <a href="#intro" class="footer-link">Wprowadzenie</a>
-        <a href="#korzysci" class="footer-link">Korzyści</a>
-        <a href="#zagrozenia" class="footer-link">Zagrożenia</a>
+        <a href="#dna" class="footer-link">Struktura DNA</a>
+        <a href="#techniki" class="footer-link">Techniki</a>
+        <a href="#korzysci" class="footer-link">Korzy&#347;ci</a>
+        <a href="#zagrozenia" class="footer-link">Zagro&#380;enia</a>
         <a href="#gmo" class="footer-link">GMO</a>
         <a href="#soja" class="footer-link">Soja GMO</a>
         <a href="#wnioski" class="footer-link">Wnioski</a>
@@ -504,21 +566,20 @@
     <div class="footer-col">
       <h4 class="footer-heading">AKCJE</h4>
       <div class="footer-btns">
-        <button class="action-btn" onclick="window.print()">🖨️ DRUKUJ STRONĘ</button>
-        <button class="action-btn" id="themeBtn" onclick="toggleTheme()">☀️ JASNY MOTYW</button>
-        <button class="action-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆️ POWRÓT NA GÓRĘ</button>
-        <button class="action-btn" id="shareBtn">📤 UDOSTĘPNIJ</button>
+        <button class="action-btn" onclick="window.print()">&#x1F5A8;&#xFE0F; DRUKUJ STRONE</button>
+        <button class="action-btn" id="themeBtn" onclick="toggleTheme()">&#x2600;&#xFE0F; JASNY MOTYW</button>
+        <button class="action-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#x2B06;&#xFE0F; POWROT NA GORE</button>
+        <button class="action-btn" id="shareBtn">&#x1F4E4; UDOSTEPNIJ</button>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 Roger S. — Wszelkie prawa zastrzeżone</span>
-    <span class="footer-tag">BIOTECHNOLOGIA MOLEKULARNA v1.0</span>
+    <span>&#169; 2025 Roger S. - Wszelkie prawa zastrze&#380;one</span>
+    <span class="footer-tag">BIOTECHNOLOGIA MOLEKULARNA v2.0</span>
   </div>
 </footer>
 
-<div id="toast" class="toast">✅ Link skopiowany do schowka!</div>
-
+<div id="toast" class="toast">&#x2705; Link skopiowany do schowka!</div>
 <script src="script.js"></script>
 </body>
 </html>
